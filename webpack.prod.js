@@ -33,8 +33,8 @@ module.exports = () =>
       }),
 
       new HtmlWebpackPlugin({
-        template: './src/other.html',
-        filename: 'other.html',
+        template: './src/animation.html',
+        filename: 'animation.html',
         inject: 'body',
         chunks: ['sub'], //sub.jsだけを読み込む
         minify: {

@@ -1,5 +1,7 @@
+import 'js/gsap';
 import jQuery from 'jquery';
 import utils from './utils';
+import '@scss/app.scss';
 
 console.log('Hello, sub.js');
 
