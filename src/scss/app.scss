@@ -1,15 +1,53 @@
 //⬇︎「DartSass3.0」以降では「@importではなく@useを使う」ことが推奨されています
 @use './normalize.css'; //normalize.cssの内容を取り込む
 
-h1 {
-  font-size: 2em;
-  transition: all 0.3s;
-  color: green;
+html {
+  font-size: 62.5%; /* 10px = 1rem */
+}
 
-  &:hover {
-    transform: translateX(50px);
-    color: red;
+////⬇︎スマホ用「モバイルファースト」
+span {
+  font-size: 1.6rem;
+  display: block;
+}
+
+h1 {
+  font-size: 2.4rem; /* 24px */
+  // transition: all 0.3s;
+  // &:hover {
+  //   transform: translateX(50px);
+  //   color: red;
+  // }
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+section {
+  margin-bottom: 20%;
+}
+
+.inner {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.parts {
+  width: 80%;
+  margin: 0% auto;
+  @media screen and (max-width: 600px) {
+    width: 100%;
   }
+}
+
+.main_section {
+  margin: 0 auto;
+  padding: 0;
 }
 
 .imageClass {
@@ -24,4 +62,45 @@ h1 {
   background-size: cover;
   width: 100px;
   height: 100px;
+}
+
+//////⬇︎animation.htmlページ
+h1.animate_title {
+  font-size: 2.4rem; /* 24px */
+  color: blueviolet;
+}
+.main_section h1.animate_title:hover {
+  transform: none;
+}
+.box {
+  width: 150px;
+  height: 150px;
+}
+.box1 {
+  background-color: tomato;
+  span {
+    font-size: 2rem;
+    display: block;
+  }
+}
+.box2 {
+  background-color: skyblue;
+  span {
+    font-size: 2rem;
+    display: block;
+  }
+}
+
+/* タブレット以上の場合 */
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 2.4rem; /* 24px */
+  }
+}
+
+/* PC以上の場合 */
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 2.4rem; /* 24px */
+  }
 }

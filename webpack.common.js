@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = ({ outputFile, assetFile }) => ({
-  entry: { app: 'js/app.js', sub: 'js/sub.js' },
+  entry: { app: 'js/app.js', sub: 'js/sub.js' }, //entryは複数指定可能。keyが出力ファイル名、valueがその元になるファイルパス
   output: {
     path: path.resolve(__dirname, 'dist'), //「dist」を出力先フォルダにする
     filename: `${outputFile}.js`,
