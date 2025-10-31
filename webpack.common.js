@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = ({ outputFile, assetFile }) => ({
   entry: { app: 'js/app.js', sub: 'js/sub.js' }, //entryは複数指定可能。keyが出力ファイル名、valueがその元になるファイルパス
@@ -80,6 +81,11 @@ module.exports = ({ outputFile, assetFile }) => ({
       emitWarning: true,
       failOnError: false,
       fix: true,
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'src/images', to: 'images' }, // ← これを追加！
+      ],
     }),
   ],
 

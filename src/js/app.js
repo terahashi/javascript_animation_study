@@ -1,8 +1,8 @@
-import 'js/sub';
-import '@scss/app.scss';
-
 import jQuery from 'jquery';
 import utils from './utils';
+import '@scss/app.scss';
+
+import 'js/sub';
 
 // setTimeout(() => {
 //   import('@scss/app');

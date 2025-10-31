@@ -4,27 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>animation_test</title>
+    <title>Animation Test</title>
   </head>
   <body>
-    <section>
-      <div class="main_section">
-        <div class="inner">
-          <div class="parts">
-            <h1 class="animate_title">animationのテスト</h1>
-            <p></p>
-          </div>
+    <!-- ⬇︎header -->
+    <header>
+      <nav>
+        <h3 id="logo">AnimeTest</h3>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ⬇︎main -->
+    <section class="sec-main">
+      <div class="inner">
+        <div class="parts">
+          <h1 class="animate-title">アニメーションテスト</h1>
+          <p></p>
         </div>
       </div>
     </section>
 
-    <!-- section 1 gsap -->
+    <!-- section1 基礎-->
     <section>
       <div class="inner">
         <div class="parts">
-          <h2>GSAPを使ったアニメーション1 - 基礎編</h2>
-
-          <div class="animation_area">
+          <h2>GSAPを使ったアニメーション1</h2>
+          <div class="animation-area">
             <div class="box box1"><span>Box 1</span></div>
             <div class="box box2"><span>Box 2</span></div>
           </div>
@@ -32,19 +42,23 @@
       </div>
     </section>
 
-    <!-- section 2 gsap car-->
-    <section>
+    <!-- section2 背景で豪華なスライド-->
+    <section class="sec-car-start">
       <div class="inner">
-        <h2>GSAPを使ったアニメーション 2</h2>
-        <div class="area02"></div>
+        <div class="parts">
+          <h2>GSAPを使ったアニメーション2 - gsap.timeline()を使用。スクラブアニメーションも可能。</h2>
+        </div>
       </div>
+    </section>
+    <section class="sec-car">
+      <div class="car-area">
+        <img src="./images/car.jpg" alt="" />
+        <h1 class="headline">DREAM BIG</h1>
+      </div>
+      <!-- ⬇︎上から下に降ってくるアニメーション -->
+      <div class="slider"></div>
     </section>
 
     <!-- <a href="./index.html">Go back to index page.</a> -->
-
-    <!-- ⬇︎GSAPのCDNを追加 -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-    <!-- ⬇︎ScrollTriggerプラグインを使う場合は以下も追加 -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   </body>
 </html>
