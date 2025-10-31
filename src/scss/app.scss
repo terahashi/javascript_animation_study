@@ -1,18 +1,24 @@
 //⬇︎「DartSass3.0」以降では「@importではなく@useを使う」ことが推奨されています
 @use './normalize.css'; //normalize.cssの内容を取り込む
+//⬇︎Google FontsのPoppinsをインポート
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+//////スマホ用「モバイルファースト」で基本スタイルを記述していきます
 html {
   font-size: 62.5%; /* 10px = 1rem */
 }
 
-////⬇︎スマホ用「モバイルファースト」
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
 span {
   font-size: 1.6rem;
   display: block;
 }
 
 h1 {
-  font-size: 2.4rem; /* 24px */
+  font-size: 2.4rem;
   // transition: all 0.3s;
   // &:hover {
   //   transform: translateX(50px);
@@ -21,7 +27,7 @@ h1 {
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 2.8rem;
 }
 
 p {
@@ -29,7 +35,7 @@ p {
 }
 
 section {
-  margin-bottom: 20%;
+  margin-bottom: 7%;
 }
 
 .inner {
@@ -45,32 +51,52 @@ section {
   }
 }
 
-.main_section {
-  margin: 0 auto;
-  padding: 0;
+//⬇︎header
+header {
+  width: 100%;
+  margin-bottom: 3%;
+  h3 {
+    font-size: 2.4rem;
+    cursor: pointer;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: aquamarine;
+    color: #fff;
+    background-color: #000;
+    .hamburger {
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      span {
+        display: block;
+        height: 3px;
+        background: #fff;
+        border-radius: 100px;
+      }
+    }
+  }
 }
 
-.imageClass {
-  width: 250px;
-  height: auto;
-  display: flex;
+//⬇︎AnimeTest ページ
+section.sec-main {
+  margin-bottom: 9%;
 }
-
-.bg {
-  background-image: url('~@images/webpack-logo.svg');
-  // background-image: url('~images/webpack-logo.svg'); //resolveで設定した「modulesのsrc」が参照される
-  background-size: cover;
-  width: 100px;
-  height: 100px;
+h1.animate-title {
+  font-size: 4rem;
+  color: #000;
 }
-
-//////⬇︎animation.htmlページ
-h1.animate_title {
-  font-size: 2.4rem; /* 24px */
-  color: blueviolet;
-}
-.main_section h1.animate_title:hover {
+.main-section h1.animate-title:hover {
   transform: none;
+}
+.animation-area {
+  width: 100%;
 }
 .box {
   width: 150px;
@@ -90,7 +116,60 @@ h1.animate_title {
     display: block;
   }
 }
-//⬇︎carのアニメーション
+//car
+section.sec-car-start {
+  margin-bottom: 0;
+}
+section.sec-car {
+  padding: 5% 0;
+  margin-bottom: 1000px;
+  position: relative;
+  width: 100%;
+  height: 50vh; //親要素で高さを明確に決定する。50vhか400pxなど。
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  .car-area {
+    width: 100%;
+    height: 100%; //子要素に100%設定。親要素で明確に高さを決めているので有効になる
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    img {
+      width: 100%;
+      height: 100%; //子要素に100%設定。親要素で明確に高さを決めているので有効になる
+      object-fit: cover;
+    }
+    h1.headline {
+      font-size: 8rem;
+      position: absolute;
+      top: 60%;
+      left: 10%;
+      color: #fff;
+      z-index: 1;
+      transform: translate(-10%, -70%);
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      width: 100%;
+      height: 100%;
+      opacity: 0.4;
+    }
+  }
+  .slider {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to left, #ba7453, #d1a984);
+    z-index: -1;
+  }
+}
 
 /* タブレット以上の場合 */
 @media screen and (min-width: 768px) {
