@@ -20,12 +20,14 @@ module.exports = () =>
         filename: 'index.html',
         inject: 'body',
         chunks: ['app'], //app.jsと「app.jsに関連付けられたファイル」だけを読み込む
+        cache: false, //⬅︎dev環境で「キャッシュ無効化」
       }),
       new HtmlWebpackPlugin({
         template: './src/animation.html',
         filename: 'animation.html',
         inject: 'body',
         chunks: ['sub'], //sub.jsと「sub.jsに関連付けられたファイル」を読み込む
+        cache: false, //⬅︎dev環境で「キャッシュ無効化」
       }),
     ],
 
