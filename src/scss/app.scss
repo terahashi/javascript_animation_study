@@ -55,7 +55,7 @@ section {
 header {
   width: 100%;
   margin-bottom: 3%;
-  h3 {
+  h3.logo {
     font-size: 2.4rem;
     cursor: pointer;
   }
@@ -84,9 +84,9 @@ header {
   }
 }
 
-//⬇︎AnimeTest ページ
+////⬇︎animation.html
 section.sec-main {
-  margin-bottom: 9%;
+  margin-bottom: 20%;
 }
 h1.animate-title {
   font-size: 4rem;
@@ -95,6 +95,8 @@ h1.animate-title {
 .main-section h1.animate-title:hover {
   transform: none;
 }
+
+//section0 基礎編
 .animation-area {
   width: 100%;
 }
@@ -116,19 +118,20 @@ h1.animate-title {
     display: block;
   }
 }
-//car
+
+//section1 Tweenアニメーション
 section.sec-car-start {
   margin-bottom: 0;
 }
 section.sec-car {
   padding: 5% 0;
-  margin-bottom: 1000px;
   position: relative;
   width: 100%;
-  height: 50vh; //親要素で高さを明確に決定する。50vhか400pxなど。
+  height: 70vh; //親要素で高さを明確に決定する。50vhか400pxなど。
   display: flex;
   justify-self: center;
   align-items: center;
+  overflow: hidden;
   .car-area {
     width: 100%;
     height: 100%; //子要素に100%設定。親要素で明確に高さを決めているので有効になる
