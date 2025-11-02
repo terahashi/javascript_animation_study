@@ -1,6 +1,4 @@
 node_modules
 
 # distは無視
-# src/imagesフォルダをGit管理から除外
 dist/
-# src/images/
