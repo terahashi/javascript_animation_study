@@ -1,6 +1,7 @@
 node_modules
-dist/
+dist/*
 
-# images フォルダを Git 管理から除外
+# images フォルダをGit管理から除外
+# dist/images は無視しない（追跡対象に戻す）
 src/images/
-dist/images/
+!dist/images/
