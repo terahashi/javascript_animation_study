@@ -121,7 +121,7 @@ gsap.fromTo(
     delay: 2,
     ease: 'power2.inOut',
     scrollTrigger: {
-      trigger: headline,
+      trigger: headline, //headline(.headline)要素に入った瞬間にアニメーション発火
       start: 'top 70%',
       toggleActions: 'play none none none',
       // markers: true, //start/endマーカーを表示して確認できるようにする
@@ -130,19 +130,18 @@ gsap.fromTo(
 );
 
 ///////////section2 スクラブアニメーションを作る///////////
-
-// 1つのタイムラインで背景と文字を同時にスクラブさせる
+//⬇︎1つのタイムラインで「背景と文字」を同時にスクラブさせる
+//gsap.timelineとは「アニメーションの“時間軸”をまとめるための入れ物を作る」
 const scrubTl = gsap.timeline({
   scrollTrigger: {
-    trigger: '.sec-scrub',
+    trigger: '.scrub', //.sec-scurb要素に入った瞬間にアニメーション発火
     start: 'top 100%',
     end: 'bottom top',
     scrub: true,
-    markers: true, //start/endマーカーを表示して確認できるようにする
+    // markers: true, //start/endマーカーを表示して確認できるようにする
   },
 });
-
-// 背景パララックス（タイムラインに入れて同期）
+//⬇︎背景パララックス（タイムラインに入れて同期）
 scrubTl.to(
   '.scrub-image',
   {
@@ -151,15 +150,89 @@ scrubTl.to(
   },
   0
 );
-
-// 文字を順に上へ（staggerで順番）
+//⬇︎文字を順に上へ（staggerで順番）
 scrubTl.to(
   '.scrub-title span',
   {
-    y: -80, // 文字の浮き上がる距離
-    opacity: 1, // 出現感を出す
+    y: -80, //文字の浮き上がる距離
+    opacity: 1,
     ease: 'power2.out',
     stagger: 0.1, // 少しずつ順番に
   },
-  0.2 // 背景が少し動いた後に文字が動く
+  0.2 //背景が0.2秒動いた後に文字が動く
+);
+
+///////////section3 スクラブアニメーション2 文字が左右から出現する///////////
+const scrub2 = document.querySelector('.scrub2');
+const scrubleft = document.querySelector('.scrub-left');
+const scrubright = document.querySelector('.scrub-right');
+const scrubTitles = document.querySelectorAll('.scrub-left, .scrub-right');
+
+const scrubTl2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: scrub2, //発火地点。クラス.scrub2要素に入った瞬間にアニメーション発火
+    start: 'top 100%', //scrub2要素のtop(上端)からのscroller-startの位置 100%(1番下部)
+    end: 'bottom 90%', //scrub2要素のbottom(末端)からのscroller-endの位置 90%
+    scrub: 2, //スクロール量に応じて、2秒かけてスクラブが追いついていく。つまり数値を大きくすると「ゆっくりスクラブ」になる
+    markers: true,
+    onEnter: () => scrub2.classList.add('is-selected'), // 入った瞬間に、黒背景is-selectedクラスを追加
+  },
+});
+
+//⬇︎scrub-leftのスクラブアニメーション
+scrubTl2.fromTo(
+  scrubleft,
+  {
+    xPercent: -100,
+    opacity: 0.9, //透明度は初期値0.9
+  },
+  {
+    xPercent: 0,
+    opacity: 1,
+  }
+);
+//⬇︎scrub-rightのスクラブアニメーション
+scrubTl2.fromTo(
+  scrubright,
+  {
+    xPercent: 100,
+    opacity: 0.9, //透明度は初期値0.9
+  },
+  {
+    xPercent: 0,
+    opacity: 1,
+  },
+  '<' //このアニメーションを"scrubleftのアニメーションと同時に開始する"
+);
+//⬇︎背景色を白から黒にスクロールで変化
+scrubTl2.to(
+  scrub2,
+  {
+    backgroundColor: '#000000',
+    ease: 'power2.inOut',
+  },
+  0 //最初から(0秒)で開始して変化
+);
+//⬇︎文字がスクロールで黒から白に変化
+scrubTl2.to(
+  scrubTitles,
+  {
+    color: '#fff',
+    ease: 'power2.inOut',
+  },
+  0
+);
+
+//////////////////////section4 SVGアニメーション//////////////////////
+const path = document.querySelector('path');
+gsap.fromTo(
+  path,
+  { scaleY: 0.5, transformOrigin: 'center bottom' },
+  {
+    scaleY: 1,
+    ease: 'bounce.out',
+    duration: 1,
+    repeat: -1, // 無限に繰り返す
+    yoyo: true, // 行き帰りで動く
+  }
 );
