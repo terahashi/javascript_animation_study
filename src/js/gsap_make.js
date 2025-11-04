@@ -174,7 +174,7 @@ const scrubTl2 = gsap.timeline({
     start: 'top 100%', //scrub2要素のtop(上端)からのscroller-startの位置 100%(1番下部)
     end: 'bottom 90%', //scrub2要素のbottom(末端)からのscroller-endの位置 90%
     scrub: 2, //スクロール量に応じて、2秒かけてスクラブが追いついていく。つまり数値を大きくすると「ゆっくりスクラブ」になる
-    markers: true,
+    // markers: true,
     onEnter: () => scrub2.classList.add('is-selected'), // 入った瞬間に、黒背景is-selectedクラスを追加
   },
 });
@@ -224,15 +224,57 @@ scrubTl2.to(
 );
 
 //////////////////////section4 SVGアニメーション//////////////////////
-const path = document.querySelector('path');
-gsap.fromTo(
-  path,
-  { scaleY: 0.5, transformOrigin: 'center bottom' },
-  {
-    scaleY: 1,
-    ease: 'bounce.out',
-    duration: 1,
-    repeat: -1, // 無限に繰り返す
-    yoyo: true, // 行き帰りで動く
-  }
-);
+////⬇︎要素に入ったら「SVGがアニメーション(文字の中身は透明、線だけに)」するVer
+const chars = document.querySelectorAll('.char');
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.svg',
+    start: 'top 100%',
+    end: 'bottom 90%',
+    // scrub: 1,
+    repeat: 0, //1回だけ再生（繰り返さない）
+    // markers: true,
+  },
+});
+chars.forEach((char, i) => {
+  //①各パス（文字）の線の全長を取得
+  const length = char.getTotalLength(); //getTotalLengthメソッドで各パス（文字）の線の全長を取得
+  //②setメソッドで「線が何も描かれていない状態」にセット
+  gsap.set(char, {
+    strokeDasharray: length, //「線の長さ」を設定。これで線が分割可能な状態になる。
+    strokeDashoffset: -length, //「線の描き始めがどちらの方向から動くかを決める。lengthにするとパスの始点➡︎終点に向かって描く。-lengthにするとパスの終➡︎始点に向かって描く。
+  });
+  //③Timeline（tl）を使って「順番に1文字ずつ線を描くアニメーションを設定」suru
+  tl.to(
+    char,
+    {
+      strokeDashoffset: 0, //「0」で線が全て出現している状態に戻す
+      duration: 1.5,
+      ease: 'power2.Inout',
+    },
+    i * 0.3 //⬅︎順番にずらす
+  );
+});
+
+////⬇︎要素に入ったら「SVGがアニメーション(文字の中身も白に変化)」するVer
+// const paths = document.querySelectorAll('.char');
+// paths.forEach((path, i) => {
+//   const length = path.getTotalLength();
+//   gsap.set(path, {
+//     stroke: '#fff',
+//     strokeWidth: 1.5,
+//     fill: 'none', //塗りつぶしを無効に
+//     strokeDasharray: length,
+//     strokeDashoffset: length,
+//   });
+//   gsap.to(path, {
+//     strokeDashoffset: 0,
+//     duration: 1.2,
+//     delay: i * 0.2,
+//     ease: 'power2.out',
+//     onComplete: () => {
+//       //onComplete()関数を使って、描き終わったら塗りをアニメーション
+//       gsap.to(path, { fill: 'white', duration: 0.6 });//塗りつぶし(文字の中身も白に変化)
+//     },
+//   });
+// });

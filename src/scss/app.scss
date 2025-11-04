@@ -254,8 +254,20 @@ section.scrub2 {
 section.svg {
   width: 100%;
   height: 100%;
-  background-color: #fff;
-  color: #000;
+  text-align: center;
+  background: #000;
+  padding: 10% 0;
+  svg {
+    width: 80%;
+    height: auto;
+    .char {
+      fill: none; //最初は塗りなし
+      stroke: white; //描かれていく「線の色」　purpleにすれば紫色の線になる
+      stroke-width: 1.5; //線の太さ(1.5px)を指定します
+      stroke-dasharray: 1000; //cssでは「線を破線にする設定」。「線を1000px線、1000px空白を繰り返す破線」
+      stroke-dashoffset: 1000; //cssでは「線を1000pxずらして全部非表示にする」
+    }
+  }
 }
 
 /* タブレット以上の場合 */
@@ -264,7 +276,6 @@ section.svg {
     font-size: 2.4rem; /* 24px */
   }
 }
-
 /* PC以上の場合 */
 @media screen and (min-width: 1200px) {
   body {
