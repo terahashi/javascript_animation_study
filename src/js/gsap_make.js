@@ -237,14 +237,14 @@ const tl = gsap.timeline({
   },
 });
 chars.forEach((char, i) => {
-  //①各パス（文字）の線の全長を取得
+  //⬇︎①各パス（文字）の線の全長を取得
   const length = char.getTotalLength(); //getTotalLengthメソッドで各パス（文字）の線の全長を取得
-  //②setメソッドで「線が何も描かれていない状態」にセット
+  //⬇︎②setメソッドで「線が何も描かれていない状態」にセット
   gsap.set(char, {
-    strokeDasharray: length, //「線の長さ」を設定。これで線が分割可能な状態になる。
-    strokeDashoffset: -length, //「線の描き始めがどちらの方向から動くかを決める。lengthにするとパスの始点➡︎終点に向かって描く。-lengthにするとパスの終➡︎始点に向かって描く。
+    strokeDasharray: length, //破線として設定。全体の長さを点線化して「隠す」
+    strokeDashoffset: -length, //線全体を長さ分ずらして見えなくする. 線の描き始めがどちらの方向から動くかを決める。lengthにするとパスの始点➡︎終点に向かって描く。-lengthにするとパスの終➡︎始点に向かって描く。
   });
-  //③Timeline（tl）を使って「順番に1文字ずつ線を描くアニメーションを設定」suru
+  //⬇︎③Timeline（tl）を使って「順番に1文字ずつ線を描くアニメーションを設定」suru
   tl.to(
     char,
     {
@@ -278,3 +278,86 @@ chars.forEach((char, i) => {
 //     },
 //   });
 // });
+
+//////////////////////section4 SVGアニメーション2//////////////////////
+////⬇︎クリックで発火する「SVGのハート」アニメーション////
+const heart = document.querySelector('.heart');
+const stage = document.querySelector('.stage');
+
+//ハートがクリックされたら{}の中の処理を実行
+heart.addEventListener('click', () => {
+  const COUNT = 12; //粒の数12個
+  const colors = ['#3f6fc9ff', '#f73fc6ff', '#18d514ff', '#ffd1dc']; //粒の色
+  //ループで粒を作る
+  for (let i = 0; i < COUNT; i++) {
+    const div = document.createElement('div'); //新しい<div>を作る
+    div.classList.add('dot'); //<div class=に "dot">を追加
+    stage.appendChild(div); //親要素.stageの中に<div class="dot">を追加して「画面に表示」
+
+    const angle = (360 / COUNT) * i; //粒の飛ぶ角度を決める。「utils」はGSAPが事前に用意しているもの。アニメーション作成に便利な関数群(ランダム生成、シャッフル、要素を交互に切り替えるなど)が入っています。
+    const distance = gsap.utils.random(60, 120); // 粒の飛ぶ距離を「ランダム」で決める
+    const size = gsap.utils.random(4, 10); // 粒の1つ1つの大きさをランダム4px~10pxで決める
+    gsap.set(div, { width: size, height: size, backgroundColor: gsap.utils.random(colors) }); //set()で初期状態を設定。「sizeという変数にはランダムな数値」が入っており例えば4px〜10pxなど。
+
+    gsap.fromTo(
+      div,
+      { x: 0, y: 0, opacity: 1, rotation: angle },
+      {
+        x: Math.cos((angle * Math.PI) / 180) * distance, //Math.cos()とMath.sin()は角度を「方向ベクトル(コサイン、サイン)」を計算する関数。
+        y: Math.sin((angle * Math.PI) / 180) * distance, //Math.PIは円周率(3.14)を意味します。「(angle * Math.PI) / 180」は角度をラジアンに変換。
+        opacity: 0,
+        duration: gsap.utils.random(0.8, 1.5),
+        ease: 'power2.out',
+        onComplete: () => div.remove(),
+      }
+    );
+  }
+  //⬆︎ここまでが「ハートがクリック」された時の処理
+
+  //⬇︎ハートを少し縮ませて戻す
+  gsap.fromTo(heart, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
+});
+
+//////////////////////section4 スクロールトリガーで発自動火する「SVGのハート」アニメーション//////////////////////
+// const heart2 = document.querySelector('.heart2');
+// const stage2 = document.querySelector('.stage2');
+// //スクロールトリガー設定
+// ScrollTrigger.create({
+//   trigger: stage2, //発火トリガーとなる要素
+//   start: 'top 80%', //スクロールで画面の80%位置に入ったら
+//   once: true, //一度だけ発火
+//   onEnter: emitParticles, //関数を呼び出す
+//   // markers: true, //デバッグ表示（慣れたらfalseに）
+// });
+
+// function emitParticles() {
+//   const COUNT = 12;
+//   const colors = ['#3f6fc9ff', '#f73fc6ff', '#18d514ff', '#ffd1dc'];
+
+//   for (let i = 0; i < COUNT; i++) {
+//     const dot = document.createElement('div');
+//     dot.classList.add('dot2');
+//     stage2.appendChild(dot);
+
+//     const angle = (360 / COUNT) * i;
+//     const distance = gsap.utils.random(60, 120);
+//     const size = gsap.utils.random(4, 10);
+
+//     gsap.set(dot, { width: size, height: size, backgroundColor: gsap.utils.random(colors) });
+
+//     gsap.fromTo(
+//       dot,
+//       { x: 0, y: 0, opacity: 1, rotation: angle },
+//       {
+//         x: Math.cos((angle * Math.PI) / 180) * distance,
+//         y: Math.sin((angle * Math.PI) / 180) * distance,
+//         opacity: 0,
+//         duration: gsap.utils.random(0.8, 1.5),
+//         ease: 'power2.out',
+//         onComplete: () => dot.remove(),
+//       }
+//     );
+//   }
+//   // ハートを弾ませる
+//   gsap.fromTo(heart2, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
+// }
