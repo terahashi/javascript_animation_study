@@ -174,8 +174,11 @@ const scrubTl2 = gsap.timeline({
     start: 'top 100%', //scrub2要素のtop(上端)からのscroller-startの位置 100%(1番下部)
     end: 'bottom 90%', //scrub2要素のbottom(末端)からのscroller-endの位置 90%
     scrub: 2, //スクロール量に応じて、2秒かけてスクラブが追いついていく。つまり数値を大きくすると「ゆっくりスクラブ」になる
+    onEnter: () => scrub2.classList.add('is-selected'), //要素scrub2に入った瞬間にis-selectedクラスを追加。onEnterはGSAPの独自メソッド（コールバック関数）である
+    onLeave: () => scrub2.classList.remove('is-selected'), //要素scrub2に入った瞬間にis-selectedクラスを除外。
+    onEnterBack: () => scrub2.classList.add('is-selected'), //要素scrub2に戻ってきた時に再びクラスis-selectedを付けたい
+    onLeaveBack: () => scrub2.classList.remove('is-selected'),
     // markers: true,
-    onEnter: () => scrub2.classList.add('is-selected'), // 入った瞬間に、黒背景is-selectedクラスを追加
   },
 });
 
@@ -202,7 +205,7 @@ scrubTl2.fromTo(
     xPercent: 0,
     opacity: 1,
   },
-  '<' //このアニメーションを"scrubleftのアニメーションと同時に開始する"
+  '<' //⬅︎このアニメーションを"scrubleftのアニメーションと同時に開始する"
 );
 //⬇︎背景色を白から黒にスクロールで変化
 scrubTl2.to(
@@ -279,10 +282,9 @@ chars.forEach((char, i) => {
 //   });
 // });
 
-//////////////////////section4 SVGアニメーション2//////////////////////
-////⬇︎クリックで発火する「SVGのハート」アニメーション////
+//////////////////////section5 SVGハート1「パーティクルアニメーション」//////////////////////
 const heart = document.querySelector('.heart');
-const stage = document.querySelector('.stage');
+const relative1 = document.querySelector('.relative1');
 
 //ハートがクリックされたら{}の中の処理を実行
 heart.addEventListener('click', () => {
@@ -292,11 +294,11 @@ heart.addEventListener('click', () => {
   for (let i = 0; i < COUNT; i++) {
     const div = document.createElement('div'); //新しい<div>を作る
     div.classList.add('dot'); //<div class=に "dot">を追加
-    stage.appendChild(div); //親要素.stageの中に<div class="dot">を追加して「画面に表示」
+    relative1.appendChild(div); //親要素.relative1<div class="dot">を追加して「画面に表示」
 
     const angle = (360 / COUNT) * i; //粒の飛ぶ角度を決める。「utils」はGSAPが事前に用意しているもの。アニメーション作成に便利な関数群(ランダム生成、シャッフル、要素を交互に切り替えるなど)が入っています。
-    const distance = gsap.utils.random(60, 120); // 粒の飛ぶ距離を「ランダム」で決める
-    const size = gsap.utils.random(4, 10); // 粒の1つ1つの大きさをランダム4px~10pxで決める
+    const distance = gsap.utils.random(60, 120); //粒の飛ぶ距離を「ランダム」で決める
+    const size = gsap.utils.random(4, 10); //粒の1つ1つの大きさをランダム4px~10pxで決める
     gsap.set(div, { width: size, height: size, backgroundColor: gsap.utils.random(colors) }); //set()で初期状態を設定。「sizeという変数にはランダムな数値」が入っており例えば4px〜10pxなど。
 
     gsap.fromTo(
@@ -318,46 +320,176 @@ heart.addEventListener('click', () => {
   gsap.fromTo(heart, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
 });
 
-//////////////////////section4 スクロールトリガーで発自動火する「SVGのハート」アニメーション//////////////////////
-// const heart2 = document.querySelector('.heart2');
-// const stage2 = document.querySelector('.stage2');
-// //スクロールトリガー設定
-// ScrollTrigger.create({
-//   trigger: stage2, //発火トリガーとなる要素
-//   start: 'top 80%', //スクロールで画面の80%位置に入ったら
-//   once: true, //一度だけ発火
-//   onEnter: emitParticles, //関数を呼び出す
-//   // markers: true, //デバッグ表示（慣れたらfalseに）
-// });
+//////////////////////SVGハート2「パーティクルアニメーション2」//////////////////////
+const heart2 = document.querySelector('.heart2');
+const relative2 = document.querySelector('.relative2');
+ScrollTrigger.create({
+  trigger: relative2, //発火トリガーとなる要素
+  start: 'top 80%', //スクロールで画面の80%位置に入ったら
+  once: true, //一度だけ発火
+  onEnter: emitParticles, //関数を呼び出す
+  // markers: true, //デバッグ表示（慣れたらfalseに）
+});
+function emitParticles() {
+  const COUNT = 12;
+  const colors = ['#3f6fc9ff', '#f73fc6ff', '#18d514ff', '#ffd1dc'];
 
-// function emitParticles() {
-//   const COUNT = 12;
-//   const colors = ['#3f6fc9ff', '#f73fc6ff', '#18d514ff', '#ffd1dc'];
+  for (let i = 0; i < COUNT; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('dot2');
+    relative2.appendChild(dot);
 
-//   for (let i = 0; i < COUNT; i++) {
-//     const dot = document.createElement('div');
-//     dot.classList.add('dot2');
-//     stage2.appendChild(dot);
+    const angle = (360 / COUNT) * i;
+    const distance = gsap.utils.random(60, 120);
+    const size = gsap.utils.random(4, 10);
 
-//     const angle = (360 / COUNT) * i;
-//     const distance = gsap.utils.random(60, 120);
-//     const size = gsap.utils.random(4, 10);
+    gsap.set(dot, { width: size, height: size, backgroundColor: gsap.utils.random(colors) });
 
-//     gsap.set(dot, { width: size, height: size, backgroundColor: gsap.utils.random(colors) });
+    gsap.fromTo(
+      dot,
+      { x: 0, y: 0, opacity: 1, rotation: angle },
+      {
+        x: Math.cos((angle * Math.PI) / 180) * distance,
+        y: Math.sin((angle * Math.PI) / 180) * distance,
+        opacity: 0,
+        duration: gsap.utils.random(0.8, 1.5),
+        ease: 'power2.out',
+        onComplete: () => dot.remove(),
+      }
+    );
+  }
+  // ハートを弾ませる
+  gsap.fromTo(heart2, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
+}
 
-//     gsap.fromTo(
-//       dot,
-//       { x: 0, y: 0, opacity: 1, rotation: angle },
-//       {
-//         x: Math.cos((angle * Math.PI) / 180) * distance,
-//         y: Math.sin((angle * Math.PI) / 180) * distance,
-//         opacity: 0,
-//         duration: gsap.utils.random(0.8, 1.5),
-//         ease: 'power2.out',
-//         onComplete: () => dot.remove(),
-//       }
-//     );
-//   }
-//   // ハートを弾ませる
-//   gsap.fromTo(heart2, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
-// }
+//////////////////////SVG星「パーティクルアニメーション3」//////////////////////
+const star = document.querySelector('.star');
+const relative3 = document.querySelector('.relative3');
+
+star.addEventListener('click', () => {
+  const COUNT = 15; //粒の数15個
+  const colors = ['#fcf000ff', '#fcf000ff', '#fcf000ff', '#fcf000ff']; //粒の色
+
+  //ループで粒を作る
+  for (let i = 0; i < COUNT; i++) {
+    const div = document.createElement('div'); //新しい<div>を作る
+    div.classList.add('dot3'); //<div class=に"dot3">を追加
+    relative3.appendChild(div); //親要素.relative3の中に<div class="dot3">を追加して「画面に表示」
+
+    const angle = (360 / COUNT) * i; //粒の飛ぶ角度を決める。「utils」はGSAPが事前に用意しているもの。アニメーション作成に便利な関数群(ランダム生成、シャッフル、要素を交互に切り替えるなど)が入っています。
+    const distance = gsap.utils.random(60, 120); // 粒の飛ぶ距離を「ランダム」で決める
+    const size = gsap.utils.random(4, 10); // 粒の1つ1つの大きさをランダム4px~10pxで決める
+    gsap.set(div, { width: size, height: size, backgroundColor: gsap.utils.random(colors) }); //set()で初期状態を設定。「sizeという変数にはランダムな数値」が入る。例えば4px〜10pxなど
+
+    gsap.fromTo(
+      div,
+      { x: 0, y: 0, opacity: 1, rotation: angle },
+      {
+        x: Math.cos((angle * Math.PI) / 180) * distance, //Math.cos()とMath.sin()は角度を「方向ベクトル(コサイン、サイン)」を計算する関数。
+        y: Math.sin((angle * Math.PI) / 180) * distance, //Math.PIは円周率(3.14)を意味します。「(angle * Math.PI) / 180」は角度をラジアンに変換。
+        opacity: 0,
+        duration: gsap.utils.random(0.8, 1.5),
+        ease: 'power2.out',
+        onComplete: () => div.remove(),
+      }
+    );
+  }
+  //⬆︎ここまでが「星がクリック」された時の処理
+
+  //⬇︎星を少し縮ませて戻す
+  gsap.fromTo(star, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
+});
+
+//////////////////////SVGアニメーション4 ハート4//////////////////////
+const heart4 = document.querySelector('.heart4');
+const circle = document.querySelector('.circle');
+const particlesContainer = document.querySelector('.particles');
+
+heart4.addEventListener('click', () => {
+  //タイムラインを作成
+  const tl = gsap.timeline();
+
+  //1 (circle) 中心から広がるピンクの円
+  tl.fromTo(
+    circle,
+    { width: 0, height: 0, opacity: 1 },
+    {
+      width: 150,
+      height: 150,
+      opacity: 1,
+      duration: 0.5, //アニメーションの継続時間（秒）
+      ease: 'power1.out',
+    }
+  ).to(circle, {
+    opacity: 0,
+    duration: 0.1,
+    ease: 'power1.out',
+  });
+
+  //2 (heart4) ハートが0からズームして出現
+  tl.fromTo(
+    heart4,
+    { scale: 0, opacity: 0 },
+    {
+      scale: 1.1,
+      opacity: 1,
+      duration: 0.1,
+      ease: 'back.out(1.7)',
+    },
+    '-=0.5' //「'-=0.5'」は“0.5秒前に始める”という意味。「前のアニメーション(中心から広がるピンクの円)が終わる0.5秒前にこのアニメーションをスタートさせる」
+    //「'+=0.3'」にすると今度は「前のアニメーションが終わってから0.3秒後に始める」という意味になります。
+  );
+
+  //3 (heart4) ハートが弾む
+  tl.to(
+    heart4,
+    {
+      scale: 1.5,
+      duration: 0.1,
+      yoyo: true,
+      repeat: 1,
+      ease: 'bounce.out',
+      y: -25,
+      onStart: createParticles, // 弾む瞬間に花火発火！
+    },
+    '-=0.3'
+  );
+
+  //⬇︎花火 パーティクル生成関数（弾む瞬間に呼ばれる）
+  function createParticles() {
+    const COUNT = 18;
+    const colors = ['#fcf000', '#f9c0d0', '#ff69b4', '#fff'];
+
+    for (let i = 0; i < COUNT; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particlesContainer.appendChild(particle);
+
+      const angle = gsap.utils.random(0, Math.PI * 2); //粒の飛ぶ角度を決める
+      const distance = gsap.utils.random(120, 120); //粒が飛ぶ距離
+      const size = gsap.utils.random(4, 10); //粒の1つ1つの大きさをランダム4px~10pxで決める
+
+      //⬇gsap.setでアニメーションする前の指定した要素(particle)の"初期値の設定・位置のリセット"を設定する。
+      gsap.set(particle, {
+        width: size, //上の「const size = gsap.utils.random(4, 10);」のこと。width:4px〜10px
+        height: size,
+        backgroundColor: gsap.utils.random(colors),
+      });
+
+      //花火「パーティクル」
+      gsap.fromTo(
+        particle,
+        { x: 0, y: 0, opacity: 1 },
+        {
+          x: Math.cos(angle) * distance,
+          y: Math.sin(angle) * distance,
+          opacity: 0,
+          scale: 0.5,
+          duration: gsap.utils.random(0.8, 1.2), //アニメーションの継続時間（0.8から1.2秒の間）
+          ease: 'power2.out',
+          onComplete: () => particle.remove(),
+        }
+      );
+    }
+  }
+});
