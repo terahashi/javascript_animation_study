@@ -3,7 +3,7 @@
 //⬇︎Google FontsのPoppinsをインポート
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-//////スマホ用「モバイルファースト」で基本スタイルを記述していきます
+////////////////スマホ用「モバイルファースト」で基本スタイルを記述していきます
 html {
   font-size: 62.5%; /* 10px = 1rem */
 }
@@ -11,6 +11,7 @@ html {
 * {
   font-family: 'Poppins', sans-serif;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 span {
@@ -47,7 +48,7 @@ section {
   }
 }
 
-//⬇︎header
+////////////////⬇︎header
 header {
   width: 100%;
   margin-bottom: 3%;
@@ -80,7 +81,7 @@ header {
   }
 }
 
-////⬇︎animation.html
+////////////////⬇︎animation.html
 section.sec-main {
   margin-bottom: 10%;
 }
@@ -92,7 +93,7 @@ h1.animate-title {
   transform: none;
 }
 
-//section0 基礎編
+////////////////section0 基礎編
 .animation-area {
   width: 100%;
 }
@@ -115,7 +116,7 @@ h1.animate-title {
   }
 }
 
-//section1 Tweenアニメーション
+////////////////section1 Tweenアニメーション
 section.sec-tween-start {
   margin-bottom: 0;
 }
@@ -170,7 +171,7 @@ section.tween {
   }
 }
 
-//section2 スクラブアニメーション
+////////////////section2 スクラブアニメーション
 .sec-scrub-start {
   margin-bottom: 0;
 }
@@ -208,7 +209,7 @@ section.scrub {
   }
 }
 
-//section3 スクラブアニメーション　文字が左右から出現
+////////////////section3 スクラブアニメーション　文字が左右から出現
 .sec-scrub2-start {
   margin-bottom: 0;
 }
@@ -242,7 +243,7 @@ section.scrub2 {
   }
 }
 
-//section4 SVGアニメーション
+////////////////section4 SVGアニメーション
 .sec-svg-start {
   margin-bottom: 0;
 }
@@ -265,7 +266,7 @@ section.svg {
   }
 }
 
-//section5 SVGアニメーション ハート
+////////////////section5 SVGアニメーション ハート
 section.stage {
   width: 100%;
   height: 100%;
@@ -297,38 +298,38 @@ section.stage {
   }
 }
 
-//SVGアニメーション ハート2
-section.stage2 {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background: #000;
-  padding: 5% 0;
-  position: relative;
-  p.white {
-    color: #fff;
-    font-size: 1.8rem;
-  }
-  .relative2 {
-    position: relative;
-    svg.heart2 {
-      width: 100px;
-      height: auto;
-    }
-    .dot2 {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-  }
-}
+/////////////////SVGアニメーション ハート2
+// section.stage2 {
+//   width: 100%;
+//   height: 100%;
+//   text-align: center;
+//   background: #000;
+//   padding: 5% 0;
+//   position: relative;
+//   p.white {
+//     color: #fff;
+//     font-size: 1.8rem;
+//   }
+//   .relative2 {
+//     position: relative;
+//     svg.heart2 {
+//       width: 100px;
+//       height: auto;
+//     }
+//     .dot2 {
+//       position: absolute;
+//       width: 10px;
+//       height: 10px;
+//       border-radius: 50%;
+//       top: 50%;
+//       left: 50%;
+//       transform: translate(-50%, -50%);
+//       pointer-events: none;
+//     }
+//   }
+// }
 
-//SVGアニメーション 星
+////////////////SVGアニメーション 星
 section.stage3 {
   width: 100%;
   height: 100%;
@@ -360,7 +361,7 @@ section.stage3 {
   }
 }
 
-//SVGアニメーション ハート3
+////////////////SVGアニメーション ハート3
 section.stage4 {
   width: 100%;
   height: 100%;
@@ -388,7 +389,7 @@ section.stage4 {
       width: 0;
       height: 0;
       border-radius: 50%;
-      background: rgba(230, 6, 77, 0.3);
+      // background: rgba(230, 6, 77, 0.5);
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
@@ -406,6 +407,51 @@ section.stage4 {
     }
   }
 }
+
+////////////////section6 文章の末尾に「タイピングアニメーションの発火」
+section.typing-anime {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #000;
+  padding: 5% 0;
+  position: relative;
+  margin-bottom: 30%;
+  p.white {
+    color: #fff;
+    font-size: 1.8rem;
+  }
+  .typing_text {
+    color: #fff;
+    span.ityped {
+      display: inline;
+      color: #fff;
+      font-weight: bold;
+      font-size: 6rem;
+      overflow-wrap: anywhere;
+    }
+    span.ityped-cursor {
+      display: inline;
+      font-weight: bold;
+      animation: blink 0.9s infinite; //点滅アニメーションのkeyframes使用
+      animation-direction: alternate; //アニメーションを「行き→帰り」で往復させる
+      font-size: 6.5rem;
+      padding-left: 7px;
+    }
+  }
+  //⬇︎点滅アニメーションのkeyframes
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1; //0%と100%の時は「opacityが1」で表示される。
+    }
+    50% {
+      opacity: 0; //50%の時は「opacityが0」が消える。
+    }
+  }
+}
+
+////////////////section7
 
 /* タブレット以上の場合 */
 @media screen and (min-width: 768px) {
