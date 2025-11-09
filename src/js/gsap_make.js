@@ -1,6 +1,7 @@
 //gsap.jsは「common.js」としてインポートされます
 import gsap from 'gsap'; //yarn add --dev gsap でインストール済み
 import { ScrollTrigger } from 'gsap/ScrollTrigger'; //ScrollTriggerプラグインをインポート
+import { init } from 'ityped'; //「ityped.js」(タイピングアニメーション用)yarn add ityped
 gsap.registerPlugin(ScrollTrigger); //ScrollTriggerを登録
 
 ///////////⬇︎section0 基礎的なアニメーション///////////
@@ -277,7 +278,7 @@ chars.forEach((char, i) => {
 //     ease: 'power2.out',
 //     onComplete: () => {
 //       //onComplete()関数を使って、描き終わったら塗りをアニメーション
-//       gsap.to(path, { fill: 'white', duration: 0.6 });//塗りつぶし(文字の中身も白に変化)
+//       gsap.to(path, { fill: 'white', duration: 0.6 });//⬅︎塗りつぶし(文字の中身も白に変化)
 //     },
 //   });
 // });
@@ -320,49 +321,50 @@ heart.addEventListener('click', () => {
   gsap.fromTo(heart, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
 });
 
-//////////////////////SVGハート2「パーティクルアニメーション2」//////////////////////
-const heart2 = document.querySelector('.heart2');
-const relative2 = document.querySelector('.relative2');
-ScrollTrigger.create({
-  trigger: relative2, //発火トリガーとなる要素
-  start: 'top 80%', //スクロールで画面の80%位置に入ったら
-  once: true, //一度だけ発火
-  onEnter: emitParticles, //関数を呼び出す
-  // markers: true, //デバッグ表示（慣れたらfalseに）
-});
-function emitParticles() {
-  const COUNT = 12;
-  const colors = ['#3f6fc9ff', '#f73fc6ff', '#18d514ff', '#ffd1dc'];
+//////////////////////section5 SVGハート2「発自動火パーティクルアニメーション2」//////////////////////
+// const heart2 = document.querySelector('.heart2');
+// const relative2 = document.querySelector('.relative2');
 
-  for (let i = 0; i < COUNT; i++) {
-    const dot = document.createElement('div');
-    dot.classList.add('dot2');
-    relative2.appendChild(dot);
+// ScrollTrigger.create({
+//   trigger: relative2, //発火トリガーとなる要素
+//   start: 'top 80%', //スクロールで画面の80%位置に入ったら
+//   once: true, //一度だけ発火
+//   onEnter: emitParticles, //関数を呼び出す
+//   // markers: true, //デバッグ表示（慣れたらfalseに）
+// });
+// function emitParticles() {
+//   const COUNT = 12;
+//   const colors = ['#3f6fc9ff', '#f73fc6ff', '#18d514ff', '#ffd1dc'];
 
-    const angle = (360 / COUNT) * i;
-    const distance = gsap.utils.random(60, 120);
-    const size = gsap.utils.random(4, 10);
+//   for (let i = 0; i < COUNT; i++) {
+//     const dot = document.createElement('div');
+//     dot.classList.add('dot2');
+//     relative2.appendChild(dot);
 
-    gsap.set(dot, { width: size, height: size, backgroundColor: gsap.utils.random(colors) });
+//     const angle = (360 / COUNT) * i;
+//     const distance = gsap.utils.random(60, 120);
+//     const size = gsap.utils.random(4, 10);
 
-    gsap.fromTo(
-      dot,
-      { x: 0, y: 0, opacity: 1, rotation: angle },
-      {
-        x: Math.cos((angle * Math.PI) / 180) * distance,
-        y: Math.sin((angle * Math.PI) / 180) * distance,
-        opacity: 0,
-        duration: gsap.utils.random(0.8, 1.5),
-        ease: 'power2.out',
-        onComplete: () => dot.remove(),
-      }
-    );
-  }
-  // ハートを弾ませる
-  gsap.fromTo(heart2, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
-}
+//     gsap.set(dot, { width: size, height: size, backgroundColor: gsap.utils.random(colors) });
 
-//////////////////////SVG星「パーティクルアニメーション3」//////////////////////
+//     gsap.fromTo(
+//       dot,
+//       { x: 0, y: 0, opacity: 1, rotation: angle },
+//       {
+//         x: Math.cos((angle * Math.PI) / 180) * distance,
+//         y: Math.sin((angle * Math.PI) / 180) * distance,
+//         opacity: 0,
+//         duration: gsap.utils.random(0.8, 1.5),
+//         ease: 'power2.out',
+//         onComplete: () => dot.remove(),
+//       }
+//     );
+//   }
+//   // ハートを弾ませる
+//   gsap.fromTo(heart2, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
+// }
+
+//////////////////////section5 SVG星「パーティクルアニメーション3」//////////////////////
 const star = document.querySelector('.star');
 const relative3 = document.querySelector('.relative3');
 
@@ -400,7 +402,7 @@ star.addEventListener('click', () => {
   gsap.fromTo(star, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
 });
 
-//////////////////////SVGアニメーション4 ハート4//////////////////////
+//////////////////////section5 SVGアニメーション4 ハート4//////////////////////
 const heart4 = document.querySelector('.heart4');
 const circle = document.querySelector('.circle');
 const particlesContainer = document.querySelector('.particles');
@@ -412,13 +414,14 @@ heart4.addEventListener('click', () => {
   //1 (circle) 中心から広がるピンクの円
   tl.fromTo(
     circle,
-    { width: 0, height: 0, opacity: 1 },
+    { width: 0, height: 0, opacity: 0.5, backgroundColor: 'rgba(245, 8, 178, 1)' },
     {
-      width: 150,
-      height: 150,
-      opacity: 1,
+      width: 175,
+      height: 175,
+      opacity: 0.5,
       duration: 0.5, //アニメーションの継続時間（秒）
       ease: 'power1.out',
+      backgroundColor: 'rgba(230, 6, 77, 0.9)',
     }
   ).to(circle, {
     opacity: 0,
@@ -436,7 +439,7 @@ heart4.addEventListener('click', () => {
       duration: 0.1,
       ease: 'back.out(1.7)',
     },
-    '-=0.5' //「'-=0.5'」は“0.5秒前に始める”という意味。「前のアニメーション(中心から広がるピンクの円)が終わる0.5秒前にこのアニメーションをスタートさせる」
+    '-=0.5' //「'-=0.5'」は“0.5秒前に始める”という意味。「前のアニメーション(1(circle)中心から広がるピンクの円)が終わる0.5秒前にこのアニメーションをスタートさせる」
     //「'+=0.3'」にすると今度は「前のアニメーションが終わってから0.3秒後に始める」という意味になります。
   );
 
@@ -449,7 +452,7 @@ heart4.addEventListener('click', () => {
       yoyo: true,
       repeat: 1,
       ease: 'bounce.out',
-      y: -25,
+      y: -20,
       onStart: createParticles, // 弾む瞬間に花火発火！
     },
     '-=0.3'
@@ -457,7 +460,7 @@ heart4.addEventListener('click', () => {
 
   //⬇︎花火 パーティクル生成関数（弾む瞬間に呼ばれる）
   function createParticles() {
-    const COUNT = 18;
+    const COUNT = 25;
     const colors = ['#fcf000', '#f9c0d0', '#ff69b4', '#fff'];
 
     for (let i = 0; i < COUNT; i++) {
@@ -467,7 +470,7 @@ heart4.addEventListener('click', () => {
 
       const angle = gsap.utils.random(0, Math.PI * 2); //粒の飛ぶ角度を決める
       const distance = gsap.utils.random(120, 120); //粒が飛ぶ距離
-      const size = gsap.utils.random(4, 10); //粒の1つ1つの大きさをランダム4px~10pxで決める
+      const size = gsap.utils.random(10, 15); //粒の1つ1つの大きさをランダム4px~10pxで決める
 
       //⬇gsap.setでアニメーションする前の指定した要素(particle)の"初期値の設定・位置のリセット"を設定する。
       gsap.set(particle, {
@@ -493,3 +496,27 @@ heart4.addEventListener('click', () => {
     }
   }
 });
+
+//////////////////////section5 タイピングアニメーションの発火//////////////////////
+const initTypeAnim = () => {
+  init(document.querySelector('.ityped'), {
+    strings: ['FRONTEND/DEVELOP'],
+    startDelay: 100,
+    typeSpeed: 100,
+    backDelay: 100,
+    backSpeed: 100,
+    // loop: true,
+    loop: false,
+    showCursor: true,
+    cursorChar: '|', //スペル注意
+  });
+};
+ScrollTrigger.create({
+  onEnter: initTypeAnim,
+  trigger: '.ityped',
+  start: 'top 90%',
+  trigger: '.ityped',
+  once: 1, //1回だけトリガーされる設定
+});
+
+//////////////////////section7 //////////////////////
