@@ -526,7 +526,7 @@ if (heart4 && circle && particlesContainer) {
       //⬇︎②タイトル文字がふわっと出現
       tl.fromTo(q('.headline .label'), { opacity: 0 }, { opacity: 1, duration: 0.4, delay: 0.5 }, '<'); // "<"「rectの動きと少し重ねる」
       //⬇︎③段落やボタンが流れるように出現
-      tl.fromTo(q('.slideX'), { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.7, delay: 0.2, ease: 'power.out' }, '<');
+      tl.fromTo(q('.slideX'), { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.7, delay: 0.2, ease: 'power.out' });
     });
   });
 
