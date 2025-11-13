@@ -383,14 +383,12 @@ if (document.body.classList.contains('page-animation')) {
     //⬇︎星を少し縮ませて戻す
     gsap.fromTo(star, { scale: 1 }, { scale: 0.8, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
   });
-}
 
-//////////////////////section5 SVGアニメーション4 ハート4//////////////////////
-const heart4 = document.querySelector('.heart4');
-const circle = document.querySelector('.circle');
-const particlesContainer = document.querySelector('.particles');
+  //////////////////////section5 SVGアニメーション4 ハート4//////////////////////
+  const heart4 = document.querySelector('.heart4');
+  const circle = document.querySelector('.circle');
+  const particlesContainer = document.querySelector('.particles');
 
-if (heart4 && circle && particlesContainer) {
   heart4.addEventListener('click', () => {
     //タイムラインを作成
     const tl = gsap.timeline();
@@ -529,6 +527,4 @@ if (heart4 && circle && particlesContainer) {
       tl.fromTo(q('.slideX'), { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.7, delay: 0.2, ease: 'power.out' });
     });
   });
-
-  ////////////////////// section8 //////////////////////
 }
