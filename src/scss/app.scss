@@ -494,40 +494,40 @@ section.paragraph {
   }
 }
 
-////////////////section8 パララックス
+////////////////section8 小アニメーション
 .hero {
   position: relative;
   height: 100vh;
   overflow: hidden;
   background: #000; /* 黒背景 */
   color: #fff;
-}
-.hero-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-.hero-image img {
-  width: 40%;
-  height: 40%;
-  object-fit: cover;
-  will-change: transform, opacity; /* GSAP向け */
-}
-.scramble-text {
-  position: absolute;
-  top: 10%;
-  left: 5%;
-  font-size: 3rem;
-}
-.sub-text {
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  font-size: 1.2rem;
-  opacity: 0;
+  .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    img {
+      width: 40%;
+      height: 40%;
+      object-fit: cover;
+      will-change: transform, opacity; /* GSAP向け */
+    }
+  }
+  .scramble-text {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    font-size: 3rem;
+  }
+  .sub-text {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    font-size: 1.2rem;
+    opacity: 0;
+  }
 }
 
 /* タブレット以上の場合 */
