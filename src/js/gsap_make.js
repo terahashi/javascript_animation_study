@@ -528,3 +528,29 @@ if (document.body.classList.contains('page-animation')) {
     });
   });
 }
+
+//////////////////////section8 パララックス//////////////////////
+// 1. 画像のパララックス：上下1~2px揺れ（無限ループ）
+gsap.to('.hero-image img', {
+  y: '+=10', // 下方向に少し動く
+  repeat: -1, // 無限ループ
+  yoyo: true, // 上下に戻る
+  duration: 2,
+  ease: 'sine.inOut',
+});
+// 2. 画像の斜めフェードイン（ページ読み込み時）
+gsap.from('.hero-image img', {
+  opacity: 0,
+  x: -50,
+  y: -50,
+  duration: 1.5,
+  ease: 'power2.out',
+});
+// 3. サブテキストのフェードイン
+gsap.to('.sub-text', {
+  opacity: 1,
+  y: -30,
+  duration: 1,
+  delay: 1, // 画像が動いたあと
+  ease: 'power2.out',
+});
