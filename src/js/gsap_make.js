@@ -30,7 +30,7 @@ gsap.fromTo(
   }
 );
 
-//⬇︎「以下全てのアニメーション)」animation.htmlの<body class="page-animation">だけに適用させる
+//⬇︎以下の全てのアニメーションを「animation.htmlの<body class="page-animation">だけに適用させる」
 if (document.body.classList.contains('page-animation')) {
   console.log('animation.htmlを読み込んでいます。');
   ///////////section1 Tweenアニメーション///////////
@@ -421,8 +421,8 @@ if (document.body.classList.contains('page-animation')) {
         duration: 0.1,
         ease: 'back.out(1.7)',
       },
-      '-=0.5' //「'-=0.5'」は“0.5秒前に始める”という意味。「前のアニメーション(1(circle)中心から広がるピンクの円)が終わる0.5秒前にこのアニメーションをスタートさせる」
-      //「'+=0.3'」にすると今度は「前のアニメーションが終わってから0.3秒後に始める」という意味になります。
+      '-=0.5' //「'-=0.5'」は 前のアニメーションが終わってから0.5秒"前"に始める という意味。「前のアニメーション(1(circle)中心から広がるピンクの円)が終わる0.5秒前にこのアニメーションをスタートさせる」
+      //「'+=0.3'」にすると今度は「前のアニメーションが終わってから0.3秒"後"に始める」という意味になります。
     );
 
     //3 (heart4) ハートが弾む
@@ -527,32 +527,30 @@ if (document.body.classList.contains('page-animation')) {
       tl.fromTo(q('.slideX'), { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.7, delay: 0.2, ease: 'power.out' });
     });
   });
+
+  //////////////////////section8 小アニメーション//////////////////////
+  // 画像の斜めフェードイン（ページ読み込み時）
+  gsap.from('.hero-image img', {
+    opacity: 0,
+    x: -50,
+    y: -50,
+    duration: 1.5,
+    ease: 'power2.out',
+  });
+  // 画像の上下1~2px揺れ（無限ループ）
+  gsap.to('.hero-image img', {
+    y: '+=10', // 下方向に少し動く
+    repeat: -1, // 無限ループ
+    yoyo: true, // 上下に戻る
+    duration: 2,
+    ease: 'sine.inOut',
+  });
+  // サブテキストのフェードイン
+  gsap.to('.sub-text', {
+    opacity: 1,
+    y: -30, //下から上にフェードイン
+    duration: 1,
+    delay: 1, // 画像が動いたあと
+    ease: 'power2.out',
+  });
 }
-
-//////////////////////section8 小アニメーション//////////////////////
-// 画像の斜めフェードイン（ページ読み込み時）
-gsap.from('.hero-image img', {
-  opacity: 0,
-  x: -50,
-  y: -50,
-  duration: 1.5,
-  ease: 'power2.out',
-});
-
-// 画像の上下1~2px揺れ（無限ループ）
-gsap.to('.hero-image img', {
-  y: '+=10', // 下方向に少し動く
-  repeat: -1, // 無限ループ
-  yoyo: true, // 上下に戻る
-  duration: 2,
-  ease: 'sine.inOut',
-});
-
-// サブテキストのフェードイン
-gsap.to('.sub-text', {
-  opacity: 1,
-  y: -30, //下から上にフェードイン
-  duration: 1,
-  delay: 1, // 画像が動いたあと
-  ease: 'power2.out',
-});

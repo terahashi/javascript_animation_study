@@ -7,158 +7,170 @@
     <title>Animation Test</title>
   </head>
   <body class="page-animation">
-    <!-- ⬇︎header -->
-    <header>
-      <nav>
-        <h3 class="logo">AnimeTest</h3>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
-    </header>
+    <!-- ローディングアニメーション -->
+    <div class="loader">
+      <div class="progress-bar"></div>
+      <div class="progress-text">0%</div>
 
-    <!-- ⬇︎main -->
-    <section class="sec-main">
-      <div class="inner">
-        <div class="parts">
-          <h1 class="animate-title">アニメーションテスト</h1>
-          <p></p>
-        </div>
-      </div>
-    </section>
+      <div class="center-box"></div>
 
-    <!-- section1 Tweenアニメーション-->
-    <section class="sec-tween-start">
-      <div class="inner">
-        <div class="parts">
-          <h2>GSAPを使ったアニメーション1 - Tweenアニメーション</h2>
-        </div>
-      </div>
-    </section>
-    <section class="tween">
-      <div class="tween-area">
-        <img src="./images/car.jpg" alt="" />
-        <h1 class="headline">DREAM BIG</h1>
-      </div>
-      <!-- ⬇︎上から下に降るスライダー -->
-      <div class="slider"></div>
-    </section>
+      <div class="overlay"></div>
+    </div>
 
-    <!-- section2 スクラブアニメーション-->
-    <section class="sec-scrub-start">
-      <div class="inner">
-        <div class="parts">
-          <h2>GSAPを使ったアニメーション2 - スクラブアニメーション</h2>
-        </div>
-      </div>
-    </section>
-    <section class="scrub">
-      <div class="scrub-image"></div>
-      <div class="scrub-title">
-        <span>S</span>
-        <span>c</span>
-        <span>r</span>
-        <span>u</span>
-        <span>b</span>
-      </div>
-    </section>
+    <!-- メインコンテンツ -->
+    <div class="main-content">
+      <!-- ⬇︎header -->
+      <header>
+        <nav>
+          <h3 class="logo">AnimeTest</h3>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+      </header>
 
-    <!-- section3 スクラブアニメーション2-->
-    <section class="sec-scrub2-start">
-      <div class="inner">
-        <div class="parts">
-          <h2>GSAPを使ったアニメーション3 - スクラブアニメーション2</h2>
-          <p>文字が左右から出現するアニメーション</p>
+      <!-- ⬇︎main -->
+      <section class="sec-main">
+        <div class="inner">
+          <div class="parts">
+            <h1 class="animate-title">アニメーションテスト</h1>
+            <p></p>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="scrub2">
-      <div class="scrub-title">
-        <h1 class="scrub-left">FRONTEND/DEVELOP</h1>
-        <h1 class="scrub-right">CREATES/EXPERIENCES</h1>
-      </div>
-    </section>
+      </section>
 
-    <!-- section4 SVGアニメーション1 -->
-    <section class="sec-svg-start">
-      <div class="inner">
-        <div class="parts">
-          <h2>GSAPを使ったアニメーション4 - SVGアニメーション</h2>
+      <!-- section1 Tweenアニメーション-->
+      <section class="sec-tween-start">
+        <div class="inner">
+          <div class="parts">
+            <h2>GSAPを使ったアニメーション1 - Tweenアニメーション</h2>
+          </div>
         </div>
-      </div>
-    </section>
-    <!-- ⬇︎figmaからSVGを抽出(①右クリックで線のアウトライン化　②右クリックでコピー/貼り付けオプション➡︎SVGとしてコピー) -->
-    <section class="svg">
-      <svg width="216" height="33" viewBox="0 0 216 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path class="char" d="M19.32 27.08H8.84L7.16 32.04H0L10.16 3.96H18.08L28.24 32.04H21L19.32 27.08ZM17.56 21.8L14.08 11.52L10.64 21.8H17.56Z" fill="black" />
-        <path
-          class="char"
-          d="M44.9322 9.48C47.5455 9.48 49.6255 10.3333 51.1722 12.04C52.7455 13.72 53.5322 16.04 53.5322 19V32.04H46.7322V19.92C46.7322 18.4267 46.3455 17.2667 45.5722 16.44C44.7989 15.6133 43.7589 15.2 42.4522 15.2C41.1455 15.2 40.1055 15.6133 39.3322 16.44C38.5589 17.2667 38.1722 18.4267 38.1722 19.92V32.04H31.3322V9.72H38.1722V12.68C38.8655 11.6933 39.7988 10.92 40.9722 10.36C42.1455 9.77334 43.4655 9.48 44.9322 9.48Z"
-          fill="black"
-        />
-        <path
-          class="char"
-          d="M61.7253 7.4C60.5253 7.4 59.5386 7.05333 58.7653 6.36C58.0186 5.64 57.6453 4.76 57.6453 3.72C57.6453 2.65334 58.0186 1.77333 58.7653 1.08C59.5386 0.360001 60.5253 0 61.7253 0C62.8986 0 63.8586 0.360001 64.6053 1.08C65.3786 1.77333 65.7653 2.65334 65.7653 3.72C65.7653 4.76 65.3786 5.64 64.6053 6.36C63.8586 7.05333 62.8986 7.4 61.7253 7.4ZM65.1253 9.72V32.04H58.2853V9.72H65.1253Z"
-          fill="black"
-        />
-        <path
-          class="char"
-          d="M98.5622 9.48C101.336 9.48 103.536 10.32 105.162 12C106.816 13.68 107.642 16.0133 107.642 19V32.04H100.842V19.92C100.842 18.48 100.456 17.3733 99.6822 16.6C98.9355 15.8 97.8955 15.4 96.5622 15.4C95.2289 15.4 94.1755 15.8 93.4022 16.6C92.6555 17.3733 92.2822 18.48 92.2822 19.92V32.04H85.4822V19.92C85.4822 18.48 85.0955 17.3733 84.3222 16.6C83.5755 15.8 82.5355 15.4 81.2022 15.4C79.8689 15.4 78.8155 15.8 78.0422 16.6C77.2955 17.3733 76.9222 18.48 76.9222 19.92V32.04H70.0822V9.72H76.9222V12.52C77.6155 11.5867 78.5222 10.8533 79.6422 10.32C80.7622 9.76 82.0289 9.48 83.4422 9.48C85.1222 9.48 86.6155 9.84 87.9222 10.56C89.2555 11.28 90.2955 12.3067 91.0422 13.64C91.8155 12.4133 92.8689 11.4133 94.2022 10.64C95.5355 9.86667 96.9889 9.48 98.5622 9.48Z"
-          fill="black"
-        />
-
-        <path
-          class="char"
-          d="M111.066 20.84C111.066 18.5467 111.493 16.5333 112.346 14.8C113.226 13.0667 114.413 11.7333 115.906 10.8C117.399 9.86667 119.066 9.4 120.906 9.4C122.479 9.4 123.853 9.72 125.026 10.36C126.226 11 127.146 11.84 127.786 12.88V9.72H134.626V32.04H127.786V28.88C127.119 29.92 126.186 30.76 124.986 31.4C123.813 32.04 122.439 32.36 120.866 32.36C119.053 32.36 117.399 31.8933 115.906 30.96C114.413 30 113.226 28.6533 112.346 26.92C111.493 25.16 111.066 23.1333 111.066 20.84ZM127.786 20.88C127.786 19.1733 127.306 17.8267 126.346 16.84C125.413 15.8533 124.266 15.36 122.906 15.36C121.546 15.36 120.386 15.8533 119.426 16.84C118.493 17.8 118.026 19.1333 118.026 20.84C118.026 22.5467 118.493 23.9067 119.426 24.92C120.386 25.9067 121.546 26.4 122.906 26.4C124.266 26.4 125.413 25.9067 126.346 24.92C127.306 23.9333 127.786 22.5867 127.786 20.88Z"
-          fill="black"
-        />
-        <path
-          class="char"
-          d="M152.014 26.24V32.04H148.534C146.054 32.04 144.121 31.44 142.734 30.24C141.348 29.0133 140.654 27.0267 140.654 24.28V15.4H137.934V9.72H140.654V4.28H147.494V9.72H151.974V15.4H147.494V24.36C147.494 25.0267 147.654 25.5067 147.974 25.8C148.294 26.0933 148.828 26.24 149.574 26.24H152.014Z"
-          fill="black"
-        />
-        <path
-          class="char"
-          d="M159.264 7.4C158.064 7.4 157.078 7.05333 156.304 6.36C155.558 5.64 155.184 4.76 155.184 3.72C155.184 2.65334 155.558 1.77333 156.304 1.08C157.078 0.360001 158.064 0 159.264 0C160.438 0 161.398 0.360001 162.144 1.08C162.918 1.77333 163.304 2.65334 163.304 3.72C163.304 4.76 162.918 5.64 162.144 6.36C161.398 7.05333 160.438 7.4 159.264 7.4ZM162.664 9.72V32.04H155.824V9.72H162.664Z"
-          fill="black"
-        />
-        <path
-          class="char"
-          d="M177.781 32.36C175.595 32.36 173.621 31.8933 171.861 30.96C170.128 30.0267 168.755 28.6933 167.741 26.96C166.755 25.2267 166.261 23.2 166.261 20.88C166.261 18.5867 166.768 16.5733 167.781 14.84C168.795 13.08 170.181 11.7333 171.941 10.8C173.701 9.86667 175.675 9.4 177.861 9.4C180.048 9.4 182.021 9.86667 183.781 10.8C185.541 11.7333 186.928 13.08 187.941 14.84C188.955 16.5733 189.461 18.5867 189.461 20.88C189.461 23.1733 188.941 25.2 187.901 26.96C186.888 28.6933 185.488 30.0267 183.701 30.96C181.941 31.8933 179.968 32.36 177.781 32.36ZM177.781 26.44C179.088 26.44 180.195 25.96 181.101 25C182.035 24.04 182.501 22.6667 182.501 20.88C182.501 19.0933 182.048 17.72 181.141 16.76C180.261 15.8 179.168 15.32 177.861 15.32C176.528 15.32 175.421 15.8 174.541 16.76C173.661 17.6933 173.221 19.0667 173.221 20.88C173.221 22.6667 173.648 24.04 174.501 25C175.381 25.96 176.475 26.44 177.781 26.44Z"
-          fill="black"
-        />
-        <path
-          class="char"
-          d="M206.69 9.48C209.303 9.48 211.383 10.3333 212.93 12.04C214.503 13.72 215.29 16.04 215.29 19V32.04H208.49V19.92C208.49 18.4267 208.103 17.2667 207.33 16.44C206.557 15.6133 205.517 15.2 204.21 15.2C202.903 15.2 201.863 15.6133 201.09 16.44C200.317 17.2667 199.93 18.4267 199.93 19.92V32.04H193.09V9.72H199.93V12.68C200.623 11.6933 201.557 10.92 202.73 10.36C203.903 9.77334 205.223 9.48 206.69 9.48Z"
-          fill="black"
-        />
-      </svg>
-    </section>
-
-    <!-- section5 SVGアニメーション2-->
-    <section class="sec-svg-start">
-      <div class="inner">
-        <div class="parts">
-          <h2>GSAPを使ったアニメーション5 - SVGを使った「パーティクルアニメーション」</h2>
+      </section>
+      <section class="tween">
+        <div class="tween-area">
+          <img src="./images/car.jpg" alt="" />
+          <h1 class="headline">DREAM BIG</h1>
         </div>
-      </div>
-    </section>
-    <!--stage1 ハート -->
-    <section class="stage">
-      <p class="white">クリックで「パーティクルアニメーションが発火」</p>
-      <div class="relative1">
-        <svg class="heart" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- ⬇︎上から下に降るスライダー -->
+        <div class="slider"></div>
+      </section>
+
+      <!-- section2 スクラブアニメーション-->
+      <section class="sec-scrub-start">
+        <div class="inner">
+          <div class="parts">
+            <h2>GSAPを使ったアニメーション2 - スクラブアニメーション</h2>
+          </div>
+        </div>
+      </section>
+      <section class="scrub">
+        <div class="scrub-image"></div>
+        <div class="scrub-title">
+          <span>S</span>
+          <span>c</span>
+          <span>r</span>
+          <span>u</span>
+          <span>b</span>
+        </div>
+      </section>
+
+      <!-- section3 スクラブアニメーション2-->
+      <section class="sec-scrub2-start">
+        <div class="inner">
+          <div class="parts">
+            <h2>GSAPを使ったアニメーション3 - スクラブアニメーション2</h2>
+            <p>文字が左右から出現するアニメーション</p>
+          </div>
+        </div>
+      </section>
+      <section class="scrub2">
+        <div class="scrub-title">
+          <h1 class="scrub-left">FRONTEND/DEVELOP</h1>
+          <h1 class="scrub-right">CREATES/EXPERIENCES</h1>
+        </div>
+      </section>
+
+      <!-- section4 SVGアニメーション1 -->
+      <section class="sec-svg-start">
+        <div class="inner">
+          <div class="parts">
+            <h2>GSAPを使ったアニメーション4 - SVGアニメーション</h2>
+          </div>
+        </div>
+      </section>
+      <!-- ⬇︎figmaからSVGを抽出(①右クリックで線のアウトライン化　②右クリックでコピー/貼り付けオプション➡︎SVGとしてコピー) -->
+      <section class="svg">
+        <svg width="216" height="33" viewBox="0 0 216 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="char" d="M19.32 27.08H8.84L7.16 32.04H0L10.16 3.96H18.08L28.24 32.04H21L19.32 27.08ZM17.56 21.8L14.08 11.52L10.64 21.8H17.56Z" fill="black" />
           <path
-            d="M7.77817 14.8492C11.8355 10.7919 18.2726 10.5683 22.5943 14.1753L22.6274 14.1421L22.6606 14.1753C26.9822 10.5683 33.4193 10.7919 37.4767 14.8492C41.534 18.9066 41.7569 25.343 38.1499 29.6647L38.1838 29.6985L22.6274 45.2548L7.07107 29.6985L7.10421 29.6653C3.49719 25.3437 3.72081 18.9066 7.77817 14.8492Z"
-            fill="#DF2A60"
+            class="char"
+            d="M44.9322 9.48C47.5455 9.48 49.6255 10.3333 51.1722 12.04C52.7455 13.72 53.5322 16.04 53.5322 19V32.04H46.7322V19.92C46.7322 18.4267 46.3455 17.2667 45.5722 16.44C44.7989 15.6133 43.7589 15.2 42.4522 15.2C41.1455 15.2 40.1055 15.6133 39.3322 16.44C38.5589 17.2667 38.1722 18.4267 38.1722 19.92V32.04H31.3322V9.72H38.1722V12.68C38.8655 11.6933 39.7988 10.92 40.9722 10.36C42.1455 9.77334 43.4655 9.48 44.9322 9.48Z"
+            fill="black"
+          />
+          <path
+            class="char"
+            d="M61.7253 7.4C60.5253 7.4 59.5386 7.05333 58.7653 6.36C58.0186 5.64 57.6453 4.76 57.6453 3.72C57.6453 2.65334 58.0186 1.77333 58.7653 1.08C59.5386 0.360001 60.5253 0 61.7253 0C62.8986 0 63.8586 0.360001 64.6053 1.08C65.3786 1.77333 65.7653 2.65334 65.7653 3.72C65.7653 4.76 65.3786 5.64 64.6053 6.36C63.8586 7.05333 62.8986 7.4 61.7253 7.4ZM65.1253 9.72V32.04H58.2853V9.72H65.1253Z"
+            fill="black"
+          />
+          <path
+            class="char"
+            d="M98.5622 9.48C101.336 9.48 103.536 10.32 105.162 12C106.816 13.68 107.642 16.0133 107.642 19V32.04H100.842V19.92C100.842 18.48 100.456 17.3733 99.6822 16.6C98.9355 15.8 97.8955 15.4 96.5622 15.4C95.2289 15.4 94.1755 15.8 93.4022 16.6C92.6555 17.3733 92.2822 18.48 92.2822 19.92V32.04H85.4822V19.92C85.4822 18.48 85.0955 17.3733 84.3222 16.6C83.5755 15.8 82.5355 15.4 81.2022 15.4C79.8689 15.4 78.8155 15.8 78.0422 16.6C77.2955 17.3733 76.9222 18.48 76.9222 19.92V32.04H70.0822V9.72H76.9222V12.52C77.6155 11.5867 78.5222 10.8533 79.6422 10.32C80.7622 9.76 82.0289 9.48 83.4422 9.48C85.1222 9.48 86.6155 9.84 87.9222 10.56C89.2555 11.28 90.2955 12.3067 91.0422 13.64C91.8155 12.4133 92.8689 11.4133 94.2022 10.64C95.5355 9.86667 96.9889 9.48 98.5622 9.48Z"
+            fill="black"
+          />
+
+          <path
+            class="char"
+            d="M111.066 20.84C111.066 18.5467 111.493 16.5333 112.346 14.8C113.226 13.0667 114.413 11.7333 115.906 10.8C117.399 9.86667 119.066 9.4 120.906 9.4C122.479 9.4 123.853 9.72 125.026 10.36C126.226 11 127.146 11.84 127.786 12.88V9.72H134.626V32.04H127.786V28.88C127.119 29.92 126.186 30.76 124.986 31.4C123.813 32.04 122.439 32.36 120.866 32.36C119.053 32.36 117.399 31.8933 115.906 30.96C114.413 30 113.226 28.6533 112.346 26.92C111.493 25.16 111.066 23.1333 111.066 20.84ZM127.786 20.88C127.786 19.1733 127.306 17.8267 126.346 16.84C125.413 15.8533 124.266 15.36 122.906 15.36C121.546 15.36 120.386 15.8533 119.426 16.84C118.493 17.8 118.026 19.1333 118.026 20.84C118.026 22.5467 118.493 23.9067 119.426 24.92C120.386 25.9067 121.546 26.4 122.906 26.4C124.266 26.4 125.413 25.9067 126.346 24.92C127.306 23.9333 127.786 22.5867 127.786 20.88Z"
+            fill="black"
+          />
+          <path
+            class="char"
+            d="M152.014 26.24V32.04H148.534C146.054 32.04 144.121 31.44 142.734 30.24C141.348 29.0133 140.654 27.0267 140.654 24.28V15.4H137.934V9.72H140.654V4.28H147.494V9.72H151.974V15.4H147.494V24.36C147.494 25.0267 147.654 25.5067 147.974 25.8C148.294 26.0933 148.828 26.24 149.574 26.24H152.014Z"
+            fill="black"
+          />
+          <path
+            class="char"
+            d="M159.264 7.4C158.064 7.4 157.078 7.05333 156.304 6.36C155.558 5.64 155.184 4.76 155.184 3.72C155.184 2.65334 155.558 1.77333 156.304 1.08C157.078 0.360001 158.064 0 159.264 0C160.438 0 161.398 0.360001 162.144 1.08C162.918 1.77333 163.304 2.65334 163.304 3.72C163.304 4.76 162.918 5.64 162.144 6.36C161.398 7.05333 160.438 7.4 159.264 7.4ZM162.664 9.72V32.04H155.824V9.72H162.664Z"
+            fill="black"
+          />
+          <path
+            class="char"
+            d="M177.781 32.36C175.595 32.36 173.621 31.8933 171.861 30.96C170.128 30.0267 168.755 28.6933 167.741 26.96C166.755 25.2267 166.261 23.2 166.261 20.88C166.261 18.5867 166.768 16.5733 167.781 14.84C168.795 13.08 170.181 11.7333 171.941 10.8C173.701 9.86667 175.675 9.4 177.861 9.4C180.048 9.4 182.021 9.86667 183.781 10.8C185.541 11.7333 186.928 13.08 187.941 14.84C188.955 16.5733 189.461 18.5867 189.461 20.88C189.461 23.1733 188.941 25.2 187.901 26.96C186.888 28.6933 185.488 30.0267 183.701 30.96C181.941 31.8933 179.968 32.36 177.781 32.36ZM177.781 26.44C179.088 26.44 180.195 25.96 181.101 25C182.035 24.04 182.501 22.6667 182.501 20.88C182.501 19.0933 182.048 17.72 181.141 16.76C180.261 15.8 179.168 15.32 177.861 15.32C176.528 15.32 175.421 15.8 174.541 16.76C173.661 17.6933 173.221 19.0667 173.221 20.88C173.221 22.6667 173.648 24.04 174.501 25C175.381 25.96 176.475 26.44 177.781 26.44Z"
+            fill="black"
+          />
+          <path
+            class="char"
+            d="M206.69 9.48C209.303 9.48 211.383 10.3333 212.93 12.04C214.503 13.72 215.29 16.04 215.29 19V32.04H208.49V19.92C208.49 18.4267 208.103 17.2667 207.33 16.44C206.557 15.6133 205.517 15.2 204.21 15.2C202.903 15.2 201.863 15.6133 201.09 16.44C200.317 17.2667 199.93 18.4267 199.93 19.92V32.04H193.09V9.72H199.93V12.68C200.623 11.6933 201.557 10.92 202.73 10.36C203.903 9.77334 205.223 9.48 206.69 9.48Z"
+            fill="black"
           />
         </svg>
-      </div>
-    </section>
-    <!--stage2 ハート2 -->
-    <!-- <section class="stage2">
+      </section>
+
+      <!-- section5 SVGアニメーション2-->
+      <section class="sec-svg-start">
+        <div class="inner">
+          <div class="parts">
+            <h2>GSAPを使ったアニメーション5 - SVGを使った「パーティクルアニメーション」</h2>
+          </div>
+        </div>
+      </section>
+      <!--stage1 ハート -->
+      <section class="stage">
+        <p class="white">クリックで「パーティクルアニメーションが発火」</p>
+        <div class="relative1">
+          <svg class="heart" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.77817 14.8492C11.8355 10.7919 18.2726 10.5683 22.5943 14.1753L22.6274 14.1421L22.6606 14.1753C26.9822 10.5683 33.4193 10.7919 37.4767 14.8492C41.534 18.9066 41.7569 25.343 38.1499 29.6647L38.1838 29.6985L22.6274 45.2548L7.07107 29.6985L7.10421 29.6653C3.49719 25.3437 3.72081 18.9066 7.77817 14.8492Z"
+              fill="#DF2A60"
+            />
+          </svg>
+        </div>
+      </section>
+      <!--stage2 ハート2 -->
+      <!-- <section class="stage2">
       <p class="white">スクロールで発自動火する「パーティクルアニメーション」</p>
       <div class="relative2">
         <svg class="heart2" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,116 +181,117 @@
         </svg>
       </div>
     </section> -->
-    <!--stage3 星 -->
-    <section class="stage3">
-      <p class="white">クリックで「パーティクルアニメーションが発火」</p>
-      <div class="relative3">
-        <svg class="star" width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.119 0L21.1603 12.4377H34.238L23.6579 20.1246L27.6992 32.5623L17.119 24.8754L6.53888 32.5623L10.5801 20.1246L1.90735e-06 12.4377H13.0778L17.119 0Z" fill="#FDDE42" />
-        </svg>
-      </div>
-    </section>
-    <!-- stage4 ハート3 -->
-    <section class="stage4">
-      <p class="white">クリックで「パーティクルアニメーションが発火」<br />円が中心から広がる</p>
-      <div class="relative4">
-        <svg class="heart4" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M7.77817 14.8492C11.8355 10.7919 18.2726 10.5683 22.5943 14.1753L22.6274 14.1421L22.6606 14.1753C26.9822 10.5683 33.4193 10.7919 37.4767 14.8492C41.534 18.9066 41.7569 25.343 38.1499 29.6647L38.1838 29.6985L22.6274 45.2548L7.07107 29.6985L7.10421 29.6653C3.49719 25.3437 3.72081 18.9066 7.77817 14.8492Z"
-            fill="#DF2A60"
-          />
-        </svg>
-        <div class="particles"></div>
-        <div class="circle"></div>
-      </div>
-    </section>
-
-    <!-- section6 文字の末尾に「カーソル点滅アニメーション」 -->
-    <section class="sec-svg-start">
-      <div class="inner">
-        <div class="parts">
-          <h2>「ityped.js」とGSAPを使ったアニメーション6 - 「タイピングアニメーション」</h2>
+      <!--stage3 星 -->
+      <section class="stage3">
+        <p class="white">クリックで「パーティクルアニメーションが発火」</p>
+        <div class="relative3">
+          <svg class="star" width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.119 0L21.1603 12.4377H34.238L23.6579 20.1246L27.6992 32.5623L17.119 24.8754L6.53888 32.5623L10.5801 20.1246L1.90735e-06 12.4377H13.0778L17.119 0Z" fill="#FDDE42" />
+          </svg>
         </div>
-      </div>
-    </section>
-    <!-- 文字の末尾に「カーソル点滅アニメーション」 -->
-    <section class="typing-anime">
-      <p class="white">タイピングアニメーションの発火</p>
-      <div class="typing_text">
-        <span class="ityped"></span>
-      </div>
-    </section>
-
-    <!-- section7 段落が流れるように出現 -->
-    <section class="sec-svg-start">
-      <div class="inner">
-        <div class="parts">
-          <h2>GSAPを使ったアニメーション7 - 段落が流れるように出現</h2>
+      </section>
+      <!-- stage4 ハート3 -->
+      <section class="stage4">
+        <p class="white">クリックで「パーティクルアニメーションが発火」<br />円が中心から広がる</p>
+        <div class="relative4">
+          <svg class="heart4" width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.77817 14.8492C11.8355 10.7919 18.2726 10.5683 22.5943 14.1753L22.6274 14.1421L22.6606 14.1753C26.9822 10.5683 33.4193 10.7919 37.4767 14.8492C41.534 18.9066 41.7569 25.343 38.1499 29.6647L38.1838 29.6985L22.6274 45.2548L7.07107 29.6985L7.10421 29.6653C3.49719 25.3437 3.72081 18.9066 7.77817 14.8492Z"
+              fill="#DF2A60"
+            />
+          </svg>
+          <div class="particles"></div>
+          <div class="circle"></div>
         </div>
-      </div>
-    </section>
-    <!-- 段落が流れるように出現 -->
-    <section class="paragraph">
-      <h1 class="headline">
-        <span class="rect"></span>
-        <span class="label">Google Material Design</span>
-      </h1>
-      <p class="slideX">
-        Material is a design system created by Google to help teams build high-quality digital experiences for Android, iOS, Flutter, and the web.<br />
-        Produced by Google.
-      </p>
-      <div class="buttonGroup">
-        <a href="#" class="button slideX">Website</a>
-      </div>
-    </section>
+      </section>
 
-    <section class="paragraph">
-      <h1 class="headline">
-        <span class="rect"></span>
-        <span class="label">Human Interface Guidelines</span>
-      </h1>
-      <p class="slideX">
-        People expect macOS apps to be intuitive, while simultaneously adaptable to their workflow through customization and flexibility. Many apps offer configurable preferences, customizable
-        interfaces, and alternate ways of completing tasks. Windows can often be resized and interface elements hidden or repositioned. Tasks can be initiated from toolbars, menus, controls, keyboard
-        shortcuts, the Touch Bar, accessibility features, and more. A flexible app facilitates learning through discoverability.
-      </p>
-      <div class="buttonGroup">
-        <a href="#" class="button slideX">iOS</a>
-        <a href="#" class="button slideX">macOS</a>
-      </div>
-    </section>
-
-    <section class="paragraph">
-      <h1 class="headline">
-        <span class="rect"></span>
-        <span class="label">Spectrum</span>
-      </h1>
-      <p class="slideX">
-        We believe that people should have a high quality experience that effortlessly scales across platforms. Spectrum considers all platforms — for both desktop and mobile — from the ground up. We
-        recognize that people work across many different products and often need to context switch, so our scale system accounts for better legibility and easier UI interactions to set a foundation
-        for consistent experiences across devices.
-      </p>
-      <div class="buttonGroup">
-        <a href="#" class="button slideX">Principles</a>
-        <a href="#" class="button slideX">What's new</a>
-        <a href="#" class="button slideX">Color</a>
-      </div>
-    </section>
-
-    <!-- section8 画像がふわふわ上下に揺れる小アニメーション -->
-    <section class="sec-svg-start">
-      <div class="inner">
-        <div class="parts">
-          <h2>GSAPを使ったアニメーション8 - 画像がふわふわ上下に揺れる小アニメーション</h2>
+      <!-- section6 文字の末尾に「カーソル点滅アニメーション」 -->
+      <section class="sec-svg-start">
+        <div class="inner">
+          <div class="parts">
+            <h2>「ityped.js」とGSAPを使ったアニメーション6 - 「タイピングアニメーション」</h2>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="hero">
-      <div class="hero-image">
-        <img src="~@images/nature.jpg" alt="自然の画像" />
-      </div>
-      <h1 class="scramble-text">Hello World</h1>
-      <p class="sub-text">サブテキストがここに入ります</p>
-    </section>
+      </section>
+      <!-- 文字の末尾に「カーソル点滅アニメーション」 -->
+      <section class="typing-anime">
+        <p class="white">タイピングアニメーションの発火</p>
+        <div class="typing_text">
+          <span class="ityped"></span>
+        </div>
+      </section>
+
+      <!-- section7 段落が流れるように出現 -->
+      <section class="sec-svg-start">
+        <div class="inner">
+          <div class="parts">
+            <h2>GSAPを使ったアニメーション7 - 段落が流れるように出現</h2>
+          </div>
+        </div>
+      </section>
+      <!-- 段落が流れるように出現 -->
+      <section class="paragraph">
+        <h1 class="headline">
+          <span class="rect"></span>
+          <span class="label">Google Material Design</span>
+        </h1>
+        <p class="slideX">
+          Material is a design system created by Google to help teams build high-quality digital experiences for Android, iOS, Flutter, and the web.<br />
+          Produced by Google.
+        </p>
+        <div class="buttonGroup">
+          <a href="#" class="button slideX">Website</a>
+        </div>
+      </section>
+
+      <section class="paragraph">
+        <h1 class="headline">
+          <span class="rect"></span>
+          <span class="label">Human Interface Guidelines</span>
+        </h1>
+        <p class="slideX">
+          People expect macOS apps to be intuitive, while simultaneously adaptable to their workflow through customization and flexibility. Many apps offer configurable preferences, customizable
+          interfaces, and alternate ways of completing tasks. Windows can often be resized and interface elements hidden or repositioned. Tasks can be initiated from toolbars, menus, controls,
+          keyboard shortcuts, the Touch Bar, accessibility features, and more. A flexible app facilitates learning through discoverability.
+        </p>
+        <div class="buttonGroup">
+          <a href="#" class="button slideX">iOS</a>
+          <a href="#" class="button slideX">macOS</a>
+        </div>
+      </section>
+
+      <section class="paragraph">
+        <h1 class="headline">
+          <span class="rect"></span>
+          <span class="label">Spectrum</span>
+        </h1>
+        <p class="slideX">
+          We believe that people should have a high quality experience that effortlessly scales across platforms. Spectrum considers all platforms — for both desktop and mobile — from the ground up.
+          We recognize that people work across many different products and often need to context switch, so our scale system accounts for better legibility and easier UI interactions to set a
+          foundation for consistent experiences across devices.
+        </p>
+        <div class="buttonGroup">
+          <a href="#" class="button slideX">Principles</a>
+          <a href="#" class="button slideX">What's new</a>
+          <a href="#" class="button slideX">Color</a>
+        </div>
+      </section>
+
+      <!-- section8 画像がふわふわ上下に揺れる小アニメーション -->
+      <section class="sec-svg-start">
+        <div class="inner">
+          <div class="parts">
+            <h2>GSAPを使ったアニメーション8 - 画像がふわふわ上下に揺れる小アニメーション</h2>
+          </div>
+        </div>
+      </section>
+      <section class="hero">
+        <div class="hero-image">
+          <img src="~@images/nature.jpg" alt="自然の画像" />
+        </div>
+        <h1 class="scramble-text">Hello World</h1>
+        <p class="sub-text">サブテキストがここに入ります</p>
+      </section>
+    </div>
   </body>
 </html>

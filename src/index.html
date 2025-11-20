@@ -6,42 +6,53 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Index</title>
   </head>
-
   <body class="page-index">
-    <!-- ⬇︎header -->
-    <header>
-      <nav>
-        <h3 class="logo">AnimeTest</h3>
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </nav>
-    </header>
-    <!-- ⬇︎main -->
-    <section class="main">
-      <div class="inner">
-        <div class="parts">
-          <h1>JavaScriptのアニメーション テストページ</h1>
-          <p>
-            ここではGSAPを使ったアニメーションを組もう<br />
-            ■HTML + JavaScriptでGSAPを使う場合はCDNを使うのが簡単です。GSAP公式サイトからDOCSタブを参照➡︎左側の「Installation」を選択でCDNインストール方法がわかります。<br /><br />
-            ■逆にReactやVueなどのフレームワークを使う場合は、npmやyarnでインストールして使うのが一般的です。
-          </p>
-          <p>このwebページは <span>・webpack(ver5) + Babel + Eslint</span> <span>・JavaScript</span><span>・GSAP</span>を使って作成しています。</p>
-        </div>
-      </div>
-    </section>
+    <!-- ローディングアニメーション -->
+    <div class="loader">
+      <div class="progress-bar"></div>
+      <div class="progress-text">0%</div>
 
-    <section>
-      <div class="inner">
-        <div class="parts">
-          <a href="./animation.html">Go to アニメーションテスト ページ</a>
-        </div>
-      </div>
-    </section>
+      <div class="center-box"></div>
 
+      <div class="overlay"></div>
+    </div>
+
+    <!-- メインコンテンツ -->
+    <div class="main-content">
+      <!-- ⬇︎header -->
+      <header>
+        <nav>
+          <h3 class="logo">AnimeTest</h3>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+      </header>
+      <!-- ⬇︎main -->
+      <section class="main">
+        <div class="inner">
+          <div class="parts">
+            <h1>JavaScriptのアニメーション テストページ</h1>
+            <p>
+              ここではGSAPを使ったアニメーションを組もう<br />
+              ■HTML + JavaScriptでGSAPを使う場合はCDNを使うのが簡単です。GSAP公式サイトからDOCSタブを参照➡︎左側の「Installation」を選択でCDNインストール方法がわかります。<br /><br />
+              ■逆にReactやVueなどのフレームワークを使う場合は、npmやyarnでインストールして使うのが一般的です。
+            </p>
+            <p>このwebページは <span>・webpack(ver5) + Babel + Eslint</span> <span>・JavaScript</span><span>・GSAP</span>を使って作成しています。</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="inner">
+          <div class="parts">
+            <a href="./animation.html">Go to アニメーションテスト ページ</a>
+          </div>
+        </div>
+      </section>
+    </div>
     <!-- <div class="bg"></div> -->
   </body>
 </html>

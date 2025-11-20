@@ -2,6 +2,7 @@ import jQuery from 'jquery';
 import utils from './utils';
 import '@scss/app.scss';
 
+import 'js/loading';
 import 'js/gsap_make';
 import 'js/hamburger';
 
