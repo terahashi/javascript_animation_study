@@ -2,6 +2,7 @@ import jQuery from 'jquery';
 import utils from './utils';
 import '@scss/app.scss';
 
+//app.jsから読み込むのはsub.jsのみにする。sub.jsから「loading.jsやgsap_make.jsを読み込もう」
 import 'js/sub';
 
 // setTimeout(() => {
