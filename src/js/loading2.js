@@ -1,4 +1,5 @@
 //gsap.jsは「common.js」としてインポートされます
+//ブラインドアニメ
 import gsap from 'gsap'; //yarn add --dev gsapでインストール済み
 
 function loadingAnimation2() {
