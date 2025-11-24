@@ -63,6 +63,7 @@ section.main {
 ////////////////⬇︎ローディングアニメーション完了後に「main-contentを表示する」
 // .main-content {
 //   visibility: hidden;
+//   margin-top: 25vh;
 // }
 
 ////////////////⬇︎ローディングアニメーション 四角のローディングアニメーション
@@ -111,6 +112,7 @@ section.main {
 ////////////////⬇︎ローディングアニメーション2 ブラインドのローディングアニメーション
 .main-content {
   visibility: hidden;
+  margin-top: 25vh;
 }
 
 // ブラインドローディング 上から下
@@ -163,8 +165,12 @@ section.main {
 
 ////////////////⬇︎header
 header.header {
-  position: relative;
   box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 
   display: flex;
   justify-content: space-between;
