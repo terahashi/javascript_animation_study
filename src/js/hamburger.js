@@ -55,21 +55,19 @@ hamburger.addEventListener('click', () => {
   isOpen = !isOpen; //isOpenを逆にして
 });
 
-//⬇︎GSAPでハンバーガーメニューを「✖︎印」にする。「isOpen」ではなく【reversed()を使用してみるパターン。】
+/////////////⬇︎GSAPでハンバーガーメニューを「✖︎印」にする。「isOpen」ではなく【reversed()を使用してみるパターン。】
 const bar1 = document.querySelector('.hamburger span:nth-child(1)');
 const bar2 = document.querySelector('.hamburger span:nth-child(2)');
 const bar3 = document.querySelector('.hamburger span:nth-child(3)');
 
-const burgerTl = gsap.timeline({ paused: true }); //{ paused: true }、最初は再生しない
-
+const burgerTl = gsap.timeline({ paused: true }); //paused:true、最初は再生しない
 burgerTl.to(bar1, { y: 8, duration: 0.2, rotate: 45 }).to(bar2, { opacity: 0, duration: 0.2 }, '<').to(bar3, { y: -8, duration: 0.2, rotate: -45 }, '<');
-
 burgerTl.reverse(0);
 //⬆︎最初に【reverse(0)で"初期状態を三本線に固定しておく。"】➡その後下記のburgerTl.play()が実行され✖︎印に変化する。
 //reverse(0)は「逆再生を開始する」という意味。
-
 hamburger.addEventListener('click', () => {
   burgerTl.reversed() ? burgerTl.play() : burgerTl.reverse();
   //⬆︎burgerTl.reversed()は「このタイムラインは“逆方向へ動くモード”なのか？を判定」する。
+  //「三項演算子true:false」でplay()かreverse()を選択。
   //最初はpaused:trueなので、クリックしたらplay()で✖︎印になる。
 });
