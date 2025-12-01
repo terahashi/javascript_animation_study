@@ -51,7 +51,7 @@ menuTl
     '-=0.4'
   );
 hamburger.addEventListener('click', () => {
-  isOpen ? menuTl.reverse() : menuTl.play(); //reverseでメニューを閉じる、playでメニューを開く
+  isOpen ? menuTl.reverse() : menuTl.play(); //reverseでメニューを閉じる「初期値はfalseなのでplayでメニューを開く」
   isOpen = !isOpen; //isOpenを逆にして
 });
 
