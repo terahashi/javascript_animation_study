@@ -2,13 +2,12 @@ import jQuery from 'jquery';
 import utils from './utils';
 import '@scss/app.scss';
 
-import 'js/loading2.js'; //ブラインドのローディングアニメーション
-// import 'js/loading'; //四角のローディングアニメーション
+import 'js/loading2.js';
 import 'js/gsap_make';
 import 'js/hamburger';
+import 'js/sidebar';
 
 console.log('Hello, sub.js');
-
 const subinit = () => {
   utils.log('hello sub.js(utils/index.js)'); // ⬅︎utilsフォルダのindex.jsのlog関数を実行
   jQuery(); // jQueryが動くか確認
