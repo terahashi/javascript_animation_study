@@ -180,6 +180,7 @@ header.header {
   margin-bottom: 3%;
   padding: 1rem 2rem;
   background-color: #000;
+  // background-color: #0000003b;
 
   h3.logo {
     a {
@@ -796,6 +797,49 @@ section.paragraph {
     font-size: 1.2rem;
     opacity: 0;
   }
+}
+
+////////////////section9 サイドバー追従
+.wrapper {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.area {
+  display: flex;
+  column-gap: 40x;
+}
+.area-heading {
+  width: 30%;
+}
+// .area-heading-title {
+// }
+.area-box {
+  background-color: #222;
+  width: 50%;
+  height: 600px;
+}
+.area-box p {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+}
+.not-area {
+  margin-top: 100px;
+  background-color: blue;
+  height: 1000px;
+}
+/* 追従に関するCSS */
+.fixedArea {
+  position: relative;
+}
+.fixedTitle {
+  position: absolute;
+}
+.fixedTitle.is-fixed {
+  position: fixed;
 }
 
 /* タブレット以上の場合 */
