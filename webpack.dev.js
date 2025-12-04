@@ -29,6 +29,13 @@ module.exports = () =>
         chunks: ['sub'], //sub.jsと「sub.jsに関連付けられたファイル」を読み込む
         cache: false, //⬅︎dev環境で「キャッシュ無効化」
       }),
+      new HtmlWebpackPlugin({
+        template: './src/3d.html',
+        filename: '3d.html',
+        inject: 'body',
+        chunks: ['sub'], //sub.jsと「sub.jsに関連付けられたファイル」を読み込む
+        cache: false, //⬅︎dev環境で「キャッシュ無効化」
+      }),
     ],
 
     devServer: {
