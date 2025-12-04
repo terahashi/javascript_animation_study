@@ -43,7 +43,7 @@ const initThree = () => {
   //3Dモデルファイルを読み込む(.glbファイル)
   //loader.loadは「モデルファイルを読み込む処理」
   loader.load(
-    './models/dog.glb', //dog.glbを読み込む
+    '/models/dog.glb', //dog.glbを読み込む
     (gltf) => {
       dog = gltf.scene; // 読み込んだ3Dモデルを dog変数に代入
       dog.scale.set(1, 1, 1); // モデルの大きさを調整
