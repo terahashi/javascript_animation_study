@@ -1,11 +1,10 @@
 import * as THREE from 'three'; //Three.js 本体を読み込みます。
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'; //.glbや.gltf「形式の3Dモデルを読み込むための専用ツール（ローダー）を読み込みます。」
 
-// ////////////////⬇︎⭕️正解のコード
-// ////////////////「#dog-area基準の幅に合わせて【3D素材がリサイズで"ちゃんと大きさが変わる】」
+////////////////⬇︎⭕️正解のコード
+////////////////「#dog-area基準の幅に合わせて【3D素材がリサイズで"ちゃんと大きさが変わる】」
 const initThree = () => {
   const dogArea = document.getElementById('dog-area'); //dog-areaを取得
-  const rect = dogArea.getBoundingClientRect(); //⭕️"getBoundingClientRect"で、dogAreaの「表示されている幅・高さ」を取得するもの。」
 
   //⬇︎dog-areaが存在しない場合は処理を中断
   if (!dogArea) {
@@ -13,13 +12,17 @@ const initThree = () => {
     return; //処理を中断
   }
 
+  // ⬇︎必ずif(!dogArea)の後に「下記のコード"getBoundingClientRect"を実行する。」
+  // dogAreaが存在してからサイズを取得する（dogAreaが存在しないとindex.htmlページでエラー発生する）
+  const rect = dogArea.getBoundingClientRect(); //"getBoundingClientRect"で、dogAreaの「表示されている幅・高さ」を取得するもの。」
+
   // ================
   // ①基本セットアップ
   // ================
   // シーン(3Dの舞台を作成する)
   const scene = new THREE.Scene();
 
-  // カメラ（dog-area に合わせる）
+  // カメラ(dog-areaに合わせる)
   const camera = new THREE.PerspectiveCamera(
     60,
     rect.width / rect.height, //rectで「dog-area」のサイズ取得
