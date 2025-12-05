@@ -7,6 +7,7 @@ import 'js/gsap_make';
 import 'js/hamburger';
 import 'js/sidebar';
 import 'js/three.js';
+import 'js/three_test';
 
 console.log('Hello, sub.js');
 const subinit = () => {
