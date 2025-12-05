@@ -874,6 +874,35 @@ section.paragraph {
 }
 
 //////////section11 three_test.js 3Dアニメーション_test
+.container-test {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px;
+  .intro {
+    width: 40vw;
+    p.lighttext {
+      font-weight: normal;
+    }
+  }
+  #box-area-test {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    width: 50vw; //vw
+    height: 60vh; //vh
+    background: #fff;
+    border-radius: 12px;
+    background-color: #97979770;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  }
+}
 
 //////////Footer
 footer {
