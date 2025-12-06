@@ -845,12 +845,13 @@ section.paragraph {
 //////////section10 three.js 3Dアニメーション
 .container {
   display: flex;
+  // display: block; //スマホ時のレスポンシブ display: block;
   align-items: center;
   justify-content: center;
   gap: 40px;
-  padding: 40px;
+  padding: 20px;
   .intro {
-    width: 40vw;
+    width: 100%;
     p.lighttext {
       font-weight: normal;
     }
@@ -859,16 +860,23 @@ section.paragraph {
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-start;
-    width: 50vw; //vw
-    height: 50vh; //vh
+    width: 100%; //3D表示の親要素は%とvwのどちらがいい？基本は「%でもvw」問題ない。
+    height: 50vh; //ただしheightは「vhか300pxなどの実際の高さが欲しい」
     background: #fff;
     border-radius: 12px;
     background-color: #97979770;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    @media (max-width: 600px) {
+      width: 100%;
+      height: 40vh;
+      margin: 0 auto;
+    }
+    //⬇︎3Dモデルが実際に「配置されるエリアcanvas」
     canvas {
       width: 100%;
       height: 100%;
       display: block;
+      margin: 0 auto;
     }
   }
 }
