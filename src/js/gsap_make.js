@@ -211,39 +211,40 @@ if (document.body.classList.contains('page-animation')) {
 
   //////////////////////section4 SVGアニメーション//////////////////////
   ////⬇︎要素に入ったら「SVGがアニメーション(文字の中身は透明、線だけに)」するVer
-  const chars = document.querySelectorAll('.char');
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.svg',
-      start: 'top 100%',
-      end: 'bottom 90%',
-      // scrub: 1,
-      repeat: 0, //1回だけ再生（繰り返さない）
-      // markers: true,
-    },
-  });
-  chars.forEach((char, i) => {
-    //⬇︎①各パス（文字）の線の全長を取得
-    const length = char.getTotalLength(); //getTotalLengthメソッドで各パス（文字）の線の全長を取得
-    //⬇︎②setメソッドで「線が何も描かれていない状態」にセット
-    gsap.set(char, {
-      strokeDasharray: length, //破線として設定。全体の長さを点線化して「隠す」
-      strokeDashoffset: -length, //線全体を長さ分ずらして見えなくする. 線の描き始めがどちらの方向から動くかを決める。lengthにするとパスの始点➡︎終点に向かって描く。-lengthにするとパスの終➡︎始点に向かって描く。
-    });
-    //⬇︎③Timeline（tl）を使って「順番に1文字ずつ線を描くアニメーションを設定」suru
-    tl.to(
-      char,
-      {
-        strokeDashoffset: 0, //「0」で線が全て出現している状態に戻す
-        duration: 1.5,
-        ease: 'power2.Inout',
-      },
-      i * 0.3 //⬅︎順番にずらす
-    );
-  });
+  // const chars = document.querySelectorAll('.char');
+  // const tl = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: '.svg',
+  //     start: 'top 100%',
+  //     end: 'bottom 90%',
+  //     // scrub: 1,
+  //     repeat: 0, //1回だけ再生（繰り返さない）
+  //     // markers: true,
+  //   },
+  // });
+  // chars.forEach((char, i) => {
+  //   //⬇︎①各パス（文字）の線の全長を取得
+  //   const length = char.getTotalLength(); //getTotalLengthメソッドで各パス（文字）の線の全長を取得
+  //   //⬇︎②setメソッドで「線が何も描かれていない状態」にセット
+  //   gsap.set(char, {
+  //     strokeDasharray: length, //破線として設定。全体の長さを点線化して「隠す」
+  //     strokeDashoffset: -length, //線全体を長さ分ずらして見えなくする. 線の描き始めがどちらの方向から動くかを決める。lengthにするとパスの始点➡︎終点に向かって描く。-lengthにするとパスの終➡︎始点に向かって描く。
+  //   });
+  //   //⬇︎③Timeline（tl）を使って「順番に1文字ずつ線を描くアニメーションを設定」suru
+  //   tl.to(
+  //     char,
+  //     {
+  //       strokeDashoffset: 0, //「0」で線が全て出現している状態に戻す
+  //       duration: 1.5,
+  //       ease: 'power2.Inout',
+  //     },
+  //     i * 0.3 //⬅︎順番にずらす
+  //   );
+  // });
 
-  ////⬇︎要素に入ったら「SVGがアニメーション(文字の中身も白に変化)」するVer
+  //////////////////////section4 ⬇︎要素に入ったら「SVGがアニメーション(文字の中身も白に変化)」するVer1
   // const paths = document.querySelectorAll('.char');
+
   // paths.forEach((path, i) => {
   //   const length = path.getTotalLength();
   //   gsap.set(path, {
@@ -253,6 +254,7 @@ if (document.body.classList.contains('page-animation')) {
   //     strokeDasharray: length,
   //     strokeDashoffset: length,
   //   });
+
   //   gsap.to(path, {
   //     strokeDashoffset: 0,
   //     duration: 1.2,
@@ -260,10 +262,62 @@ if (document.body.classList.contains('page-animation')) {
   //     ease: 'power2.out',
   //     onComplete: () => {
   //       //onComplete()関数を使って、描き終わったら塗りをアニメーション
-  //       gsap.to(path, { fill: 'white', duration: 0.6 });//⬅︎塗りつぶし(文字の中身も白に変化)
+  //       gsap.to(path, { fill: 'white', duration: 0.6 }); //⬅︎塗りつぶし(文字の中身も白に変化)
   //     },
   //   });
   // });
+
+  //////////////////////section4 ⬇︎要素に入ったら「SVGがアニメーション(文字の中身も白に変化)」するVer2
+  const paths = document.querySelectorAll('.char');
+  const fills = document.querySelectorAll('.char-fill');
+
+  paths.forEach((path, i) => {
+    const length = Math.ceil(path.getTotalLength());
+    const fill = fills[i];
+
+    //初期状態
+    gsap.set(path, {
+      strokeDasharray: length,
+      strokeDashoffset: length,
+    });
+
+    // 塗りのズレを初期設定
+    gsap.set(fill, {
+      fill: '#fff',
+      opacity: 0,
+      attr: {
+        transform: 'translate(-1.5, 1.5)', //ここが塗りのズレ！
+      },
+    });
+
+    //タイムライン
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: path, //各pathごとに発火する
+        start: 'top 90%',
+        end: '+=300', // end= start + 300px (startが発動した瞬間・そこからさらに300pxスクロールしたらアニメ完了)
+        scrub: true,
+      },
+    });
+
+    // 線を描く
+    tl.to(path, {
+      strokeDashoffset: 0,
+      duration: 0.7,
+      ease: 'none',
+    });
+
+    // 塗りをズレて出す
+    tl.to(
+      fill,
+      {
+        opacity: 1,
+        duration: 0.7,
+        ease: 'none',
+      },
+      0.6 //このアニメをタイムラインの「0.6秒の位置から開始」
+    );
+  });
 
   //////////////////////section5 SVGハート1「パーティクルアニメーション」//////////////////////
   const heart = document.querySelector('.heart');
