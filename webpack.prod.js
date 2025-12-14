@@ -63,6 +63,22 @@ module.exports = () =>
           useShortDoctype: true, // <!DOCTYPE html> に短縮（古い形式 <!DOCTYPE HTML PUBLIC ...> を使わない）
         },
       }),
+
+      new HtmlWebpackPlugin({
+        template: './src/other.html',
+        filename: 'other.html',
+        inject: 'body',
+        chunks: ['sub'], //sub.jsだけを読み込む
+        minify: {
+          collapseWhitespace: true, // HTML内の不要な空白や改行を削除し、ファイルサイズを縮小する
+          keepClosingSlash: true, // <br/> や <img/> のように閉じスラッシュを維持する（XHTML互換性のため）
+          removeComments: true, // productionなどの本番ビルドでは <!-- コメント --> をすべて削除する
+          removeRedundantAttributes: true, // 既定値の属性を削除する（例: <input type="text"> → <input>）
+          removeScriptTypeAttributes: true, // <script type="text/javascript"> の "type" 属性を削除（HTML5では不要）
+          removeStyleLinkTypeAttributes: true, // <link rel="stylesheet" type="text/css"> の "type" 属性を削除（HTML5では不要）
+          useShortDoctype: true, // <!DOCTYPE html> に短縮（古い形式 <!DOCTYPE HTML PUBLIC ...> を使わない）
+        },
+      }),
     ],
 
     optimization: {

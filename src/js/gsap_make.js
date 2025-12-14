@@ -295,7 +295,7 @@ if (document.body.classList.contains('page-animation')) {
       scrollTrigger: {
         trigger: path, //各pathごとに発火する
         start: 'top 90%',
-        end: '+=300', // end= start + 300px (startが発動した瞬間・そこからさらに300pxスクロールしたらアニメ完了)
+        end: '+=400', // end= start + 300px (startが発動した瞬間・そこからさらに300pxスクロールしたらアニメ完了)
         scrub: true,
       },
     });

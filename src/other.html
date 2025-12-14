@@ -7,9 +7,9 @@
     <title>Index</title>
   </head>
 
-  <body class="page-index">
+  <body class="page-other">
     <!-- ローディングアニメーション ブラインドのローディングアニメーション -->
-    <div class="bl-loader">
+    <!-- <div class="bl-loader">
       <div class="blind-container">
         <div class="blind"></div>
         <div class="blind"></div>
@@ -22,7 +22,7 @@
         <div class="blind"></div>
         <div class="blind"></div>
       </div>
-    </div>
+    </div> -->
 
     <!-- ⬇︎header -->
     <header class="header">
@@ -56,31 +56,51 @@
     </header>
 
     <!-- メインコンテンツ -->
-    <div class="main-content">
-      <!-- <div> -->
-      <!-- ⬇︎main -->
-      <section class="main">
-        <div class="inner">
-          <div class="parts">
-            <h1>JavaScriptのアニメーション テストページ</h1>
-            <p>
-              ここではGSAPを使ったアニメーションを組もう<br />
-              ■ReactやVueなどのフレームワークを使う場合は、npmやyarnでインストールして使うのが一般的です。 <br />
-              ■import gsap from 'gsap'; ➡︎ (yarn add --dev gsapでインストール済み)<br /><br />
-            </p>
-            <p>このwebページは <span>・webpack(ver5) + Babel + Eslint</span> <span>・HTML + SCSS + JavaScript</span><span>・GSAP</span>を使って作成しています。</p>
-          </div>
+    <div class="main-calc-content">
+      <!-- section-calc1 -->
+      <section class="sec-calc01">
+        <div class="calc-inner">
+          <h1>
+            calc テスト1 - ヘッダーを引いた高さ<br />・残りの高さをcalcで確保して「ヒーローエリアを画面ピッタリ」<br />
+            margin-top: 90px;<br />
+            height: calc(100vh - 90px);
+          </h1>
         </div>
       </section>
 
-      <section>
+      <!-- section-calc2 -->
+      <section class="sec-calc02">
         <div class="inner">
           <div class="parts">
-            <a href="./animation.html">■ GSAPアニメーションのテスト ページへ</a>
-            <br />
-            <a href="./3d.html">■ 3Dアニメーションのテスト ページへ</a>
-            <br />
-            <a href="./other.html">■ その他のテスト ページへ</a>
+            <h1>calc テスト2 - 可変値% + 固定値px</h1>
+          </div>
+        </div>
+      </section>
+      <section class="exercise1">
+        <div class="box">
+          幅をcalcで調整<br />width: calc(100% - 150px);<br /><br />可変値100%(1201px)-固定値150px = 1051pxになる。<br />「その後..."1051px-40px(padding20px × 2) = <span>1011pxが中身"</span>」
+        </div>
+      </section>
+
+      <!-- section-calc3 -->
+      <section class="sec-calc03">
+        <div class="inner">
+          <div class="parts">
+            <h1>calc テスト3 - 複数列の幅を計算</h1>
+          </div>
+        </div>
+      </section>
+      <section class="exercise2">
+        <div class="inner">
+          <p>
+            width: calc((100% - 40px) / 3); <br />
+            ⬇︎<br />
+            100%(1161px) - gap分(2列分 40px) / 3列
+          </p>
+          <div class="columns">
+            <div class="col">列1</div>
+            <div class="col">列2</div>
+            <div class="col">列3</div>
           </div>
         </div>
       </section>

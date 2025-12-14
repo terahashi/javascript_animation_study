@@ -4,6 +4,7 @@ import gsap from 'gsap'; //yarn add --dev gsapでインストール済み
 
 function loadingAnimation2() {
   const blinds = document.querySelectorAll('.blind');
+
   const tl = gsap.timeline({
     onComplete: () => {
       document.querySelector('.bl-loader').style.display = 'none';
