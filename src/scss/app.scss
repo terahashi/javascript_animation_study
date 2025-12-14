@@ -110,36 +110,40 @@ section.main {
 // }
 
 ////////////////⬇︎ローディングアニメーション2 ブラインドのローディングアニメーション
+// .main-content {
+//   visibility: hidden;
+//   margin-top: 25vh;
+// }
+
 .main-content {
-  visibility: hidden;
   margin-top: 25vh;
 }
 
-// ブラインドローディング 上から下
-.bl-loader {
-  //⬇︎「.bl-loader」は“全画面にかぶさる茶色の幕”
-  position: fixed;
-  inset: 0; //fixedとセットで使う。inset:0;は“4方向すべてを0にする省略記法”。top:0; right:0; bottom:0; left:0;のこと。画面全体を覆うのに最適。
-  z-index: 1000;
-  background: #f0cebd;
-  overflow: hidden;
-  //⬇︎「.blind-container」はブラインドを並べる"棚"
-  .blind-container {
-    display: flex;
-    flex-direction: column;
-    // flex-direction: row-reverse; //⬅︎右から左方向へブラインドが縮んでいく。
-    height: 100vh;
-    overflow: hidden;
-    .blind {
-      flex: 1; //.blindの幅を均等に分配できる
-      width: 100%;
-      height: 100vh;
-      background: #111;
-      transform-origin: top center; //「上端の真ん中を基準に指でつまんで固定する。」下方向へ向かって縮んでいく
-      //transform-origin: right center; //「flex-direction:row-reverseを付けると、右端から左方向へ向かって縮んでいく
-    }
-  }
-}
+// // ブラインドローディング 上から下
+// .bl-loader {
+//   //⬇︎「.bl-loader」は“全画面にかぶさる茶色の幕”
+//   position: fixed;
+//   inset: 0; //fixedとセットで使う。inset:0;は“4方向すべてを0にする省略記法”。top:0; right:0; bottom:0; left:0;のこと。画面全体を覆うのに最適。
+//   z-index: 1000;
+//   background: #f0cebd;
+//   overflow: hidden;
+//   //⬇︎「.blind-container」はブラインドを並べる"棚"
+//   .blind-container {
+//     display: flex;
+//     flex-direction: column;
+//     // flex-direction: row-reverse; //⬅︎右から左方向へブラインドが縮んでいく。
+//     height: 100vh;
+//     overflow: hidden;
+//     .blind {
+//       flex: 1; //.blindの幅を均等に分配できる
+//       width: 100%;
+//       height: 100vh;
+//       background: #111;
+//       transform-origin: top center; //「上端の真ん中を基準に指でつまんで固定する。」下方向へ向かって縮んでいく
+//       //transform-origin: right center; //「flex-direction:row-reverseを付けると、右端から左方向へ向かって縮んでいく
+//     }
+//   }
+// }
 
 // // ブラインドローディング 左から右
 // .bl-loader {
@@ -180,7 +184,8 @@ header.header {
   margin-bottom: 3%;
   padding: 1rem 2rem;
   background-color: #000;
-  // background-color: #0000003b;
+
+  height: 90px;
 
   h3.logo {
     a {
@@ -909,6 +914,94 @@ section.paragraph {
       width: 100%;
       height: 100%;
       display: block;
+    }
+  }
+}
+
+////////////////////⬇︎other.htmlページ
+.main-calc-content {
+  display: block;
+}
+
+///////sec-calc01
+
+section.sec-calc01 {
+  background-image: url(images/car.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-top: 90px;
+  height: calc(100vh - 90px); //⭐️⭐️calc⭐️⭐️ピッタリになります(ブラウザ高さが792pxだった場合 = margin-topが90px、sec-calc01が702pxになり = sec-calc01がブラウザ高さピッタリになる。)
+  // height: 100vh; //⬅︎ピッタリにならない(ブラウザ高さが792pxだった場合 = margin-topが90px、sec-calc01が792pxになり = sec-calc01がブラウザ高さからハミ出る。)
+  .calc-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      color: #fff;
+      text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-color: #242424;
+  }
+}
+
+///////sec-calc02
+section.sec-calc02 {
+  margin-bottom: 0;
+}
+.exercise1 {
+  width: 100%;
+  .box {
+    width: calc(100% - 150px); /* ⭐️⭐️calc⭐️⭐️可変値100%(1201px)-固定値150px = 1051pxになる。「その後..."1051px-40px(padding20px × 2) = 1011pxが中身"」 */
+    background-color: #f9c74f;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    span {
+      display: inline-block;
+      color: red;
+      font-size: 2.4rem;
+      font-weight: bold;
+    }
+  }
+}
+
+///////sec-calc03
+section.sec-calc03 {
+  margin-bottom: 0;
+}
+.exercise2 {
+  width: 100%;
+  .inner {
+    //paddingには練習でclamp()を使用。「calcとは一切関係ない」
+    padding: 0 clamp(16px, 2vw, 20px); //0は「上下が0」ということ。①スマホ：左右 16px、②タブレット：画面に応じて広がる4vw、③PCモニター：20pxまで。
+    .columns {
+      display: flex;
+      gap: 20px;
+      .col {
+        width: calc((100% - 40px) / 3); /* 100%(1161px) - gap分(2列分 40px) / 3列 */
+        padding: 20px;
+        color: #fff;
+        background-color: #000;
+        text-align: center;
+      }
     }
   }
 }
