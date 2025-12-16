@@ -5,7 +5,7 @@
 
 //AIで作成したコードをベースにカスタマイズ
 
-///////////////「headerの高さ分だけ要素が追従する関数」を実装
+/////////////// areaFixedFunk
 const areaFixedFunk = (fixedElm, fixedArea, extraOffset = 20) => {
   //⬆︎最下部に記載したareaFixedFunk('.fixedTitle', '.fixedArea', 20)が渡ってくる
   //⬆︎「extraOffset」は【ヘッダーと追従する要素の余白のpx数(20px)】
@@ -53,15 +53,17 @@ const areaFixedFunk = (fixedElm, fixedArea, extraOffset = 20) => {
     }
   };
 
-  ////////////⬇︎「ページ上のすべての追従エリアを一度にチェックする関数」
+  ////////////⬇︎handleScrollOrResize
+  //要は「ページ上のすべての追従エリアを一度にチェックする」関数です。
+  //なぜチェックするのか？
+  //checkFixed(target, area) を呼んで、その要素が「固定」か「絶対配置」か等を判定・更新します。
   const handleScrollOrResize = () => {
-    //⬇︎すべての追従エリアをループ処理
     areas.forEach((area) => {
       const target = area.querySelector(fixedElm); //各areaの中から追従対象（fixedElmつまり.fixedTitle）を探す
       if (target) checkFixed(target, area); //もしtarget(fixedElm)があれば「追従ロジックcheckFixed()」を実行
     });
   };
-  handleScrollOrResize(); //最初に一度実行しておくで「最初の表示状態を正しくセット」
+  handleScrollOrResize(); //ページ読み込み直後に一度実行しておくで「最初の表示状態を正しくセット」
 
   ////////////⬇︎スクロールとリサイズのイベントをセット(ウィンドウサイズなどでresizeが起きたら再チェックして表示を正しく整える)
   window.addEventListener('resize', handleScrollOrResize);
@@ -71,7 +73,6 @@ const areaFixedFunk = (fixedElm, fixedArea, extraOffset = 20) => {
     'scroll',
     () => {
       if (!ticking) {
-        // ⬇︎requestAnimationFrameで「スクロール中に何度も処理されるのを抑制して、パフォーマンス改善。」
         window.requestAnimationFrame(() => {
           handleScrollOrResize(); //スクロールやリサイズ時に実行する関数
           ticking = false; //処理が終わったらtickingフラグをfalseに戻す
@@ -79,7 +80,7 @@ const areaFixedFunk = (fixedElm, fixedArea, extraOffset = 20) => {
         ticking = true; //tickingフラグをtrueにセットして、次のスクロールイベントまで処理を抑制
       }
     },
-    { passive: true } //ブラウザに「イベントリスナ内で preventDefault() を使いませんよと宣言します。スクロールのパフォーマンスを優先できる
+    { passive: true } //ブラウザにブラウザに「この'scrollイベント'ではスクロールを止めませんよ」と約束している
   );
 };
 
