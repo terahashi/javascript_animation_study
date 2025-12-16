@@ -557,11 +557,11 @@ if (document.body.classList.contains('page-animation')) {
 
   //////////////////////section7 段落が流れるように出現//////////////////////
   //DOMContentLoadedで「HTMLが読み込まれた瞬間に実行」する
-  //gsap.utils.toArray("section")は全ての<section>要素を「配列に変換する」
-  //forEach((el)=> {})で「<section配列>のそれぞれの要素に対して実行」する
   window.addEventListener('DOMContentLoaded', () => {
+    //gsap.utils.toArray("section")は全ての<section>要素を「配列に変換する」
+    //forEach((el)=> {})で「<section配列>のそれぞれの要素に対して実行」する
     gsap.utils.toArray('.paragraph').forEach((el) => {
-      const q = gsap.utils.selector(el); //<paragraph> = el内だけを検索できるselector関数。gsap.utils.selector()は「対象の中だけで要素を選択できる関数を作る」
+      const q = gsap.utils.selector(el); //gsap.utils.selector()は「el対象の中だけで要素を選択できる関数を作る」
 
       const tl = gsap.timeline({
         scrollTrigger: {
