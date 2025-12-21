@@ -8,6 +8,7 @@ import 'js/hamburger';
 import 'js/sidebar';
 import 'js/three.js';
 import 'js/three_test';
+import 'js/cursor';
 
 console.log('Hello, sub.js');
 const subinit = () => {

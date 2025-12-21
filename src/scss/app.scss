@@ -60,7 +60,43 @@ section.main {
   }
 }
 
-////////////////⬇︎ローディングアニメーション完了後に「main-contentを表示する」
+////////////////⬇︎マウスストーカー
+.mouse-stalker {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #09a61e;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.3s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1; // ‼️これで縦文字はみ出し防止
+
+  pointer-events: none;
+  z-index: 9999;
+  .cursor-text {
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    white-space: nowrap; // ‼️長い文字が折り返さない
+  }
+  &.is-hover {
+    background-color: #09a61e;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 1;
+  }
+  &.is-hover .cursor-text {
+    color: #fff;
+    opacity: 1;
+  }
+}
+
+// //////////////⬇︎ローディングアニメーション完了後に「main-contentを表示する」
 // .main-content {
 //   visibility: hidden;
 //   margin-top: 25vh;
